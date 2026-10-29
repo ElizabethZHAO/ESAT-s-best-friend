@@ -1,0 +1,131 @@
+{
+  "src": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\index.html",
+  "url": "file:///C:/Users/admin/Doubao/chats/2026-10-29/new-chat/esat-physics-notes/index.html",
+  "outdir": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\_shots",
+  "include": [
+    "lint",
+    "screenshots",
+    "structure"
+  ],
+  "shots": {
+    "desktop": {
+      "screenshot": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\_shots\\index_desktop.jpg",
+      "screenshotBytes": 66123,
+      "truncated": false,
+      "structure": {
+        "title": "ESAT 物理备考工具包 · 首页",
+        "firstH1": "考纲逐条讲义 + 概念闪卡",
+        "viewport": {
+          "w": 1408,
+          "h": 757
+        },
+        "fullpage": {
+          "w": 1408,
+          "h": 1122
+        },
+        "counts": {
+          "section": 3,
+          "h1": 1,
+          "h2": 2,
+          "img": 0,
+          "canvas": 0,
+          "svg": 17,
+          "links": 2,
+          "buttons": 0
+        }
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "horizontalOverflow": [],
+      "resourceErrors": [],
+      "reportSource": "cdp"
+    },
+    "mobile": {
+      "screenshot": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\_shots\\index_mobile.jpg",
+      "screenshotBytes": 94655,
+      "truncated": false,
+      "structure": {
+        "title": "ESAT 物理备考工具包 · 首页",
+        "firstH1": "考纲逐条讲义 + 概念闪卡",
+        "viewport": {
+          "w": 492,
+          "h": 701
+        },
+        "fullpage": {
+          "w": 492,
+          "h": 1664
+        },
+        "counts": {
+          "section": 3,
+          "h1": 1,
+          "h2": 2,
+          "img": 0,
+          "canvas": 0,
+          "svg": 17,
+          "links": 2,
+          "buttons": 0
+        }
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "horizontalOverflow": [],
+      "resourceErrors": [],
+      "reportSource": "cdp"
+    }
+  },
+  "engine": "chrome_cli",
+  "chromiumExec": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "engineDegraded": true,
+  "engineDegradedReason": "playwright 未装",
+  "elapsedSec": 9.97,
+  "schemaVersion": 2,
+  "status": "pass",
+  "engineInfo": {
+    "name": "chrome_cli",
+    "degraded": true,
+    "degradedReasons": [
+      "playwright 未装"
+    ]
+  },
+  "input": {
+    "original": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\index.html",
+    "resolvedPath": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\index.html",
+    "baseUrl": "file:///C:/Users/admin/Doubao/chats/2026-10-29/new-chat/esat-physics-notes/index.html",
+    "protocol": "file",
+    "cwd": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat",
+    "mediaMode": {
+      "reducedMotion": true
+    }
+  },
+  "artifacts": {
+    "screenshots": [
+      {
+        "viewport": "desktop",
+        "path": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\_shots\\index_desktop.jpg",
+        "size": 66123,
+        "visualCoverage": {
+          "complete": true,
+          "reason": null
+        }
+      },
+      {
+        "viewport": "mobile",
+        "path": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\_shots\\index_mobile.jpg",
+        "size": 94655,
+        "visualCoverage": {
+          "complete": true,
+          "reason": null
+        }
+      }
+    ]
+  },
+  "summary": {
+    "blocker": 0,
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "findings": [],
+  "prioritizedActions": [],
+  "reportPath": "C:\\Users\\admin\\Doubao\\chats\\2026-10-29\\new-chat\\esat-physics-notes\\_shots\\report.json"
+}

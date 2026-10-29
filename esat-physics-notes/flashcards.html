@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESAT Physics Concept Flashcards</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b2a4a'/%3E%3Cpath d='M8 22 L13 10 L16 19 L20 7 L24 22' stroke='%23ffffff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='7' r='1.8' fill='%23f2b705'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+  :root{
+    --ink:#1b2a4a; --paper:#f4f6fb; --card:#fff; --line:#dbe2ef; --muted:#5b6b85; --accent:#2b4a8c;
+    --p1:#3b6fb6; --p2:#7a4fd0; --p4:#c4711f; --p5:#2e8b57; --p6:#c0392b; --p7:#8e3b5f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans SC','Segoe UI','Microsoft YaHei',system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.6;}
+  header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff;padding:12px 20px;box-shadow:0 2px 10px rgba(20,35,70,.18);}
+  header .wrap{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  header .logo{width:34px;height:34px;border-radius:8px;background:#fff;flex:0 0 auto;display:flex;align-items:center;justify-content:center;}
+  header .logo svg{width:22px;height:22px;}
+  header .t1{font-size:18px;font-weight:900;letter-spacing:.5px;}
+  header .t2{font-size:12px;color:#a9b8d8;margin-top:1px;}
+  .toolbar{position:sticky;top:58px;z-index:40;background:rgba(244,246,251,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 0 12px;}
+  .toolbar .wrap{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 8px;}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:14px;font-weight:700;cursor:pointer;color:var(--muted);font-family:inherit;min-height:44px;}
+  .tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .tab .n{font-weight:900;margin-left:2px;opacity:.85;}
+  .spacer{flex:1;}
+  .searchbox{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;}
+  .searchbox svg{width:15px;height:15px;stroke:var(--muted);}
+  .searchbox input{border:0;outline:0;font-family:inherit;font-size:16px;width:150px;background:transparent;color:var(--ink);}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:14px;cursor:pointer;color:var(--muted);font-family:inherit;min-height:44px;font-weight:700;}
+  .btn:hover{border-color:var(--accent);color:var(--accent);}
+  .btn.shuf{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .btn.shuf:hover{background:#2b4a8c;border-color:#2b4a8c;color:#fff;}
+  .count{font-size:12.5px;color:var(--muted);white-space:nowrap;}
+  .count b{color:var(--ink);font-size:14px;}
+  main{max-width:1120px;margin:0 auto;padding:24px 20px 70px;}
+  .intro{background:linear-gradient(135deg,#1b2a4a 0%,#2b4a8c 100%);color:#fff;border-radius:16px;padding:22px 26px;margin-bottom:20px;}
+  .intro h1{font-size:23px;font-weight:900;letter-spacing:.5px;}
+  .intro p{color:#c3cfe9;font-size:13px;margin-top:6px;max-width:760px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
+  /* ===== flip card ===== */
+  .fc{perspective:1400px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+  .fc-inner{position:relative;width:100%;min-height:300px;transition:transform .5s;transform-style:preserve-3d;}
+  .fc.flipped .fc-inner{transform:rotateY(180deg);}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;overflow:hidden;}
+  .fc-front{box-shadow:0 2px 10px rgba(30,50,100,.08);}
+  .fc-back{transform:rotateY(180deg);background:#fbfcff;box-shadow:0 2px 10px rgba(30,50,100,.08);}
+  .fc-top{height:6px;flex:0 0 auto;}
+  .fc-body{padding:16px 18px 14px;flex:1;display:flex;flex-direction:column;overflow:auto;}
+  .fc-sec{display:inline-block;font-size:11.5px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 8px;margin-bottom:10px;align-self:flex-start;}
+  .fc-q{font-size:16.5px;font-weight:900;line-height:1.5;}
+  .fc-a{font-size:14px;line-height:1.65;}
+  .fc-a b{color:var(--accent);}
+  .fc-a .fm{background:#fffbe6;border:1px solid #f0d77a;border-radius:6px;padding:1px 7px;font-weight:900;color:#7a5c00;white-space:nowrap;}
+  .fc-a ul{margin:6px 0 0 16px;}
+  .fc-a li{margin:3px 0;}
+  .fc-hint{margin-top:auto;padding-top:12px;font-size:11.5px;color:#9aa7bd;}
+  .fc-hint svg{width:13px;height:13px;vertical-align:-2px;stroke:#9aa7bd;}
+  .fc.flipped .fc-front .fc-hint{visibility:hidden;}
+  .none{padding:40px 0;text-align:center;color:var(--muted);font-size:14px;}
+  footer{max-width:1120px;margin:0 auto;padding:20px 20px 36px;color:#8a97ad;font-size:12.5px;border-top:1px solid var(--line);}
+  @media(max-width:640px){
+    header .t2{display:none;}
+    .searchbox{flex:1;}
+    .searchbox input{width:100%;}
+    .grid{grid-template-columns:1fr;}
+    .fc-inner{min-height:280px;}
+  }
+  @media print{header,.toolbar,.fc-hint{display:none;} .fc-inner{transform:none !important;} .fc-back{display:block;position:static;transform:none;min-height:0;} .fc-face{position:static;backface-visibility:visible;} .fc-front{display:none;} .grid{gap:10px;} body{background:#fff;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="none"/><path d="M8 22 L13 10 L16 19 L20 7 L24 22" stroke="#1b2a4a" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="7" r="1.9" fill="#f2b705"/></svg>
+    </div>
+    <div>
+      <div class="t1">ESAT Physics Flashcards</div>
+      <div class="t2">Concept recall · full syllabus · click to flip</div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-m="all">All <span class="n" id="nAll">0</span></button>
+      <button class="tab" data-m="P1">P1 <span class="n" id="nP1">0</span></button>
+      <button class="tab" data-m="P2">P2 <span class="n" id="nP2">0</span></button>
+      <button class="tab" data-m="P4">P4 <span class="n" id="nP4">0</span></button>
+      <button class="tab" data-m="P5">P5 <span class="n" id="nP5">0</span></button>
+      <button class="tab" data-m="P6">P6 <span class="n" id="nP6">0</span></button>
+      <button class="tab" data-m="P7">P7 <span class="n" id="nP7">0</span></button>
+    </div>
+    <div class="spacer"></div>
+    <div class="searchbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="text" placeholder="Search concept...">
+    </div>
+    <button class="btn shuf" id="shuf">Shuffle</button>
+    <span class="count" id="cnt">0 / 0</span>
+  </div>
+</div>
+
+<main>
+  <div class="intro">
+    <h1>Concept Flashcards</h1>
+    <p>Full-syllabus concept recall aligned with the UAT-UK ESAT Physics guide: definitions, mechanisms, applications, hazards and the small traps the spec loves to test. Click any card to reveal the answer.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="none" id="none" style="display:none">No cards match your filter or search.</div>
+</main>
+
+<footer>
+  ESAT Physics Concept Flashcards · aligned with UAT-UK ESAT Guide – Physics (June 2026) · concept focus — no calculation questions
+</footer>
+
+<script>
+/* ===== card data ===== */
+const CARDS = [
+/*__P1__*/
+{m:'P1',sec:'P1.1',q:'Which particles are transferred when objects are charged by friction?',a:'Only <b>electrons</b> move. Losing electrons → positively charged; gaining electrons → negatively charged. Protons and neutrons stay in the nucleus and never move during charging. Charge is conserved: what one object gains, the other loses.'},
+{m:'P1',sec:'P1.1',q:'Why do insulators keep their charge after rubbing, while conductors lose it?',a:'In an insulator the transferred electrons <b>cannot move through the material</b>, so the charge stays where it was put. In a conductor electrons flow freely, so excess charge leaks away unless the conductor is <b>isolated</b> from its surroundings.'},
+{m:'P1',sec:'P1.1',q:'State the rule for forces between charges.',a:'<b>Like charges repel; unlike charges attract.</b> The force is larger for bigger charges and smaller at larger separation.'},
+{m:'P1',sec:'P1.1',q:'Explain why an uncharged paper strip is attracted to a charged plastic rod.',a:'Charging by induction: the rod\u2019s field drags/pushes electrons within the paper, so the near end gains the <b>opposite</b> induced charge and is attracted. The paper stays overall neutral and the rod never touches it.'},
+{m:'P1',sec:'P1.1',q:'Give three electrostatic applications and the principle behind each.',a:'<b>Photocopier/laser printer</b>: charged drum attracts toner particles (opposite charges), heat fixes them. <b>Electrostatic paint spraying</b>: droplets given the same charge repel each other → even coat, and are attracted to the earthed car body. <b>Electrostatic air cleaner</b>: charged plates attract dust particles.'},
+{m:'P1',sec:'P1.1',q:'Why must aircraft fuel pipes be earthed? What does earthing actually do?',a:'Fuel flowing through pipes builds up static charge; a spark could <b>ignite the fuel vapour</b>. Earthing gives a low-resistance path so charge <b>flows continuously to the ground</b> instead of accumulating — no build-up, no spark.'},
+{m:'P1',sec:'P1.1',q:'Paint spraying: droplets carry like positive charges so they attract each other; droplets are attracted to the car; droplets reach the far side of the car; the earthed body gradually becomes positively charged. True or false?',a:'False — like charges <b>repel</b> (even coat). True — induction attracts the droplets. True — induced attraction pulls droplets all around, even behind the body. False — earthing <b>neutralises</b> the body (electrons flow up from the ground to cancel the positive charge).'},
+{m:'P1',sec:'P1.1',q:'What is the role of a lightning conductor?',a:'It provides a safe, low-resistance path for charge to flow into the ground — same idea as earthing: <b>prevent dangerous charge build-up</b> and protect the building.'},
+{m:'P1',sec:'P1.2',q:'From a voltage–time graph, how do you tell whether the supply is ac or dc?',a:'<b>dc</b>: the trace never crosses zero — current always flows the same direction. <b>ac</b>: part of the trace is above zero and part below — the direction reverses continuously. Any ac shape (sine, square) counts.'},
+{m:'P1',sec:'P1.2',q:'Mains electricity is 50 Hz ac. How many times per second does the current reverse, and why?',a:'<b>100 times per second.</b> One full cycle contains two reversals (forward → backward → forward), so 50 cycles/s = 100 reversals/s. A diode rectifies ac to dc by only letting current through one way.'},
+{m:'P1',sec:'P1.2',q:'Give examples of good conductors and good insulators. Why are wet or damp materials poor insulators?',a:'Good conductors: metals (copper, silver, gold), carbon (graphite), ionic solutions. Good insulators: plastic, rubber, dry wood, air, vacuum. <b>Water conducts unless extremely pure</b>, so damp materials leak charge — e.g. nylon cord (a non-absorbing insulator) in bathrooms.'},
+{m:'P1',sec:'P1.2',q:'Why do metals conduct electricity so much better than insulators?',a:'Metals have <b>free (delocalised) electrons</b> that carry charge easily through the lattice. In insulators the electrons are tightly bound to atoms and cannot move. Almost every material conducts a little — conductors just have much lower resistance.'},
+{m:'P1',sec:'P1.2',q:'A cable has a copper core and a plastic covering. What role does each part play?',a:'Copper: <b>conductor</b> — carries the current. Plastic: <b>insulator</b> — prevents current leaking to the surroundings and protects the user from electric shock.'},
+/*__P2__*/
+{m:'P2',sec:'P2.1',q:'Difference between soft and hard magnetic materials, with examples.',a:'<b>Soft (iron)</b>: easily magnetised and easily demagnetised — magnetism is lost when the field is removed; used for electromagnet cores. <b>Hard (steel)</b>: hard to magnetise but keeps its magnetism; used for permanent magnets. Key test: does the magnetism remain without the field?'},
+{m:'P2',sec:'P2.1',q:'Explain induced magnetism — what polarity appears at the near end of an unmagnetised iron nail held near a magnet?',a:'The nail becomes magnetised by induction: the <b>near end develops the opposite pole</b> (e.g. S near an N pole), the far end the same pole. Hence it is attracted, and it can pick up paperclips. Induction happens without contact.'},
+{m:'P2',sec:'P2.2',q:'What is the magnetic effect of a current? How is it demonstrated?',a:'A current-carrying wire produces a <b>magnetic field</b> around itself. Demonstration (Oersted): a compass needle placed near the wire deflects when current flows. Bigger current or more turns → stronger field.'},
+{m:'P2',sec:'P2.2',q:'Sketch the field around a straight current-carrying wire and state the direction rule.',a:'<b>Concentric circles</b> around the wire, closer and stronger near the wire, weakening with distance. Direction: <b>right-hand grip</b> — thumb along conventional current (+ → −), fingers curl in the field direction. The field exists only while current flows.'},
+{m:'P2',sec:'P2.2',q:'How do you find the N pole of a solenoid?',a:'<b>Right-hand grip on the coil</b>: fingers curl in the current direction, thumb points towards the N pole. Inside a solenoid the field is uniform; outside it looks like a bar magnet\u2019s field. The coil acts as a temporary magnet while current flows.'},
+{m:'P2',sec:'P2.2',q:'What factors affect the strength of the magnetic field around a wire?',a:'<b>Larger current</b> → stronger field. <b>Closer to the wire</b> → stronger field. For a coil: <b>more turns</b> → stronger; adding a <b>soft-iron core</b> greatly increases the field. Field strength ∝ turns × current.'},
+{m:'P2',sec:'P2.2',q:'Permanent magnet vs electromagnet — what can an electromagnet do that a permanent magnet cannot?',a:'An electromagnet\u2019s magnetism can be <b>switched on and off</b>, <b>adjusted</b> (current, turns), and its <b>poles reversed</b> by reversing current. Permanent magnets need no supply and keep their field — choose by whether you need control.'},
+{m:'P2',sec:'P2.3',q:'State Fleming\u2019s left-hand rule and what each finger represents.',a:'<b>First finger = Field</b> (N → S); <b>seCond finger = Current</b> (conventional, + → −); <b>ThuMb = Motion</b> (force). Used to find the direction of the force on a current-carrying conductor in a magnetic field.'},
+{m:'P2',sec:'P2.3',q:'What happens to the direction of the force if you reverse only the current, or reverse only the field, or reverse both?',a:'Reverse one → force <b>reverses</b>. Reverse both → force stays in the <b>same</b> direction. This mirrors the pattern of attraction/repulsion reversals.'},
+{m:'P2',sec:'P2.3',q:'What factors affect the magnitude of the force on a wire in a magnetic field?',a:'Force is larger with a <b>bigger current</b>, a <b>stronger field</b>, and a <b>longer wire</b> inside the field. It is <b>maximum perpendicular</b> to the field and <b>zero parallel</b> to it. F = BIL strictly applies to a straight wire ⊥ to a uniform field.'},
+{m:'P2',sec:'P2.3',q:'Define the tesla.',a:'1 T = 1 N m\u207B\u00B9 A\u207B\u00B9: a field such that a straight wire of length 1 m carrying 1 A perpendicular to it experiences a force of 1 N. So F = BIL gives F in newtons when B is in tesla, I in A, L in m.'},
+{m:'P2',sec:'P2.3',q:'In a dc motor, what is the split-ring commutator for, and why are the brushes made of graphite?',a:'The commutator <b>reverses the current in the coil every half-turn</b>, so the torque always acts the same way and the coil spins continuously. Graphite brushes make a low-friction, conducting sliding contact between the fixed supply and the rotating coil.'},
+{m:'P2',sec:'P2.3',q:'How can you increase the turning effect (torque) of a dc motor?',a:'Increase current; stronger magnet; <b>more turns</b>; larger coil area; wrap the coil on a <b>soft-iron core</b>. Torque is greatest when the coil lies in the plane of the field and zero when it is perpendicular to it.'},
+{m:'P2',sec:'P2.3',q:'Give applications of electromagnets.',a:'Electric bell (core magnetised attracts the hammer, then releases), electromagnetic crane for scrap yards, relay (small current switches a big circuit), loudspeaker (current-carrying voice coil in a radial magnetic field). Each uses the on/off control.'},
+{m:'P2',sec:'P2.4',q:'When is a voltage induced in a conductor? Give the two equivalent statements.',a:'When a wire <b>cuts magnetic field lines</b>, OR when the <b>field through a coil changes</b> — both are relative motion between conductor and field. A steady field induces nothing. Relative motion between magnet and coil induces as long as it continues.'},
+{m:'P2',sec:'P2.4',q:'What changes increase the size of an induced voltage?',a:'<b>Move faster</b> (cut lines more quickly), <b>stronger magnet</b>, <b>more turns</b>. The induced voltage depends on the <b>rate</b> of cutting, not the total amount — push a magnet slowly vs quickly into a coil: fast gives a bigger kick.'},
+{m:'P2',sec:'P2.4',q:'State Lenz\u2019s law and justify it using energy conservation.',a:'The induced current flows in a direction that <b>opposes the change</b> producing it (an N pole approaching a coil induces N at the near end → repulsion). If it aided the change, the magnet would speed up and energy would appear from nothing — impossible by conservation of energy.'},
+{m:'P2',sec:'P2.4',q:'What reverses the direction of an induced voltage?',a:'Reversing the <b>direction of motion</b> (cutting the other way), or reversing the <b>direction of the field change</b> (flux increasing vs decreasing). Both follow from Lenz\u2019s law: the induced effect opposes the cause.'},
+{m:'P2',sec:'P2.4',q:'Explain how an ac generator produces alternating current, and list the factors affecting its output voltage.',a:'A coil rotates in a magnetic field; the flux through the coil <b>continuously changes</b>, inducing a voltage that reverses every half-turn — sinusoidal ac. Larger output: spin faster, stronger magnet, larger coil area, more turns. Output <b>frequency = rotation speed</b>.'},
+{m:'P2',sec:'P2.4',q:'On the output voltage graph of an ac generator, when is the voltage (a) maximum, (b) zero?',a:'(a) Maximum when the wire moves <b>horizontally</b> — cutting field lines at the greatest rate. (b) Zero when the wire moves <b>vertically</b> — parallel to the field, cutting none. Both occur twice per cycle.'},
+{m:'P2',sec:'P2.4',q:'The generator is made to spin at half speed. What happens to the peak voltage and the frequency?',a:'<b>Both halve.</b> Peak voltage ∝ rate of cutting ∝ rotation speed; frequency ∝ rotation speed. Time period doubles.'},
+{m:'P2',sec:'P2.4',q:'Give applications of electromagnetic induction.',a:'Generators (mains electricity), transformers, car alternators (charge the battery), bicycle dynamo, induction cooker. In a power station the turbine (steam) drives the generator — kinetic → electrical energy.'},
+{m:'P2',sec:'P2.5',q:'Why do transformers only work with ac?',a:'The primary current must <b>keep changing</b> so the core\u2019s field keeps changing and induces a voltage in the secondary. With dc the field is steady — no induction. The <b>soft-iron core</b> magnetises/demagnetises easily and links the two coils\u2019 fields.'},
+{m:'P2',sec:'P2.5',q:'State the transformer turns-ratio formula and its condition.',a:'<span class="fm">Vp / Vs = np / ns</span> — the voltage ratio equals the turns ratio. Strictly valid for an <b>ideal (100% efficient)</b> transformer, which real transformers approximate closely. Step-up: more turns on the secondary → higher voltage.'},
+{m:'P2',sec:'P2.5',q:'In an ideal transformer, how are primary and secondary power related? What causes real losses?',a:'<b>P_in = P_out</b> (100% efficiency → VpIp = VsIs): stepping voltage up k times steps current down k times. Real losses: <b>resistive heating</b> of the coils, <b>core heating</b> as it magnetises/demagnetises (hysteresis), and <b>eddy currents</b> in the core.'},
+{m:'P2',sec:'P2.5',q:'Why is electricity transmitted at very high voltage?',a:'Line loss = <span class="fm">I\u00B2R</span>. Raising the voltage <b>lowers the current</b> for the same power, so resistive heating in the cables falls. Distinguish <b>line voltage</b> (used in P = IV, changed by transformers) from the <b>voltage drop</b> along the cable (V = IR across the cable\u2019s own resistance).'},
+{m:'P2',sec:'P2.5',q:'Recall typical UK transmission voltages.',a:'Generator ~11/33 kV → transmission grid <b>275/400 kV</b> → railway 25 kV → households 230 V. The grid uses very high voltage because line loss I\u00B2R falls sharply as I falls.'},
+{m:'P2',sec:'P2.5',q:'Ideal transformer: 240 V primary, 12 V secondary, a lamp draws 2.0 A. A second identical lamp is switched on in parallel with the first. What happens to the primary current and to lamp current?',a:'Lamp current <b>stays 2.0 A</b> (its voltage is unchanged — parallel branches are independent). Total secondary power doubles → primary current <b>doubles</b> (240 V × I = 12 V × 4.0 A → I = 0.20 A). Power conservation drives the primary current, not voltage ratios.'},
+/*__P4__*/
+{m:'P4',sec:'P4.1',q:'What is thermal energy, and how is temperature related to it?',a:'Thermal energy is the energy a substance has because its microscopic particles are moving — solids vibrate, fluids move around. Higher temperature → <b>faster average particle motion</b>. Thermal energy and temperature are different: adding energy usually raises temperature — unless a state change is happening.'},
+{m:'P4',sec:'P4.1',q:'Explain how conduction works in metals, and why metals beat non-metals.',a:'Metals have <b>free electrons</b> that shoot through the lattice and pass on kinetic energy by colliding with ions — far faster than slow neighbour-to-neighbour vibration transfer. Non-metals have no free electrons, so only slow vibration transfer occurs.'},
+{m:'P4',sec:'P4.1',q:'Order by thermal conductivity: water vapour, liquid water, ice, solid aluminium. Why can vacuum not conduct?',a:'<b>Aluminium</b> (metal, free electrons) &gt; <b>ice</b> (solid, close particles) &gt; <b>liquid water</b> &gt; <b>water vapour</b> (particles far apart). Vacuum has <b>no particles at all</b>, so conduction (which needs particle contact) is impossible.'},
+{m:'P4',sec:'P4.1',q:'State the four factors controlling the rate of conduction between two bodies.',a:'(1) <b>Temperature difference</b> — larger → faster. (2) The <b>material</b> between them — better conductor → faster. (3) <b>Separation distance</b> — shorter → faster. (4) <b>Contact area</b> — larger → faster. Rate is proportional to ΔT and area, inversely to length.'},
+{m:'P4',sec:'P4.1',q:'Double glazing: which change keeps the rate of conduction exactly the same — (a) thicker glass + smaller window, (b) better insulating gas + larger window, (c) thinner glass + vacuum gap?',a:'(a) No — both changes slow conduction. (b) <b>Yes</b> — better gas slows it, larger area speeds it up; they can cancel. (c) No — vacuum conducts nothing, so the rate must fall to zero. Watch for the two effects balancing.'},
+{m:'P4',sec:'P4.1',q:'Give applications of good and bad thermal conductors.',a:'<b>Good conductors</b>: pan bases (fast heating), heat sinks/radiators. <b>Poor conductors</b>: pan handles, blankets, double glazing, loft insulation — these all trap <b>air</b>, a poor conductor, in pockets.'},
+{m:'P4',sec:'P4.2',q:'How does heating a fluid change its density? Explain at particle level.',a:'Heating makes particles move faster → they <b>spread further apart</b> (average spacing grows — not particle size) → the fluid expands → <b>fewer particles per unit volume → density falls</b>. Hot-air balloon: hot air inside is less dense than outside air, so it is lighter and rises.'},
+{m:'P4',sec:'P4.2',q:'Describe the convection mechanism.',a:'Heated fluid becomes less dense and <b>rises</b>; cooler, denser fluid flows in to replace it; the risen fluid cools, becomes denser and <b>sinks</b> — a convection current while heating continues. Convection needs fluids (liquid/gas); <b>solids cannot convect</b> because their particles are fixed.'},
+{m:'P4',sec:'P4.2',q:'Why is a heater near the ceiling ineffective, and why are radiators placed low?',a:'Heating at the top leaves the warm fluid at the top — <b>no rising current</b>. Radiators low down: warm air rises, cool air sinks and is reheated — an effective loop. Air conditioners go <b>high</b> (cold air sinks); freezer compartments sit at the top of fridges for the same reason.'},
+{m:'P4',sec:'P4.2',q:'Explain the sea breeze using convection.',a:'By day land heats faster than sea → air above land <b>rises</b> (less dense) → cooler air flows in <b>from the sea</b> (sea breeze); high-altitude air flows back out to sea, closing the loop. At night the pattern reverses (land cools faster).'},
+{m:'P4',sec:'P4.3',q:'What is thermal radiation, and how does the Sun\u2019s heat reach Earth?',a:'Thermal radiation is <b>infrared — EM waves in the IR region</b>. It travels at the speed of light, needs <b>no medium</b>, and crosses a vacuum — that is how the Sun heats Earth. It warms objects directly without warming the air in between.'},
+{m:'P4',sec:'P4.3',q:'An object is hotter than its surroundings — is its temperature rising or falling? Explain.',a:'<b>Falling</b> — it emits radiation faster than it absorbs (net loss of energy). A cooler object absorbs more than it emits and warms up. Every object above absolute zero emits; the higher the temperature, the <b>faster</b> it emits.'},
+{m:'P4',sec:'P4.3',q:'1000 W of radiation hits a window: 100 W reflected, 750 W transmitted, 200 W emitted. Find the net power absorbed by the window.',a:'Absorbed = 1000 − 100 − 750 = <b>150 W</b>. Net = absorbed − emitted = 150 − 200 = <b>−50 W</b> — a net loss of 50 W. Energy is conserved: the incident 1000 W splits into reflected + transmitted + absorbed.'},
+{m:'P4',sec:'P4.3',q:'Which surfaces are good absorbers/emitters, and what is the key rule?',a:'<b>Dull/matt (rough)</b> surfaces: good absorbers and good emitters. <b>Shiny</b> surfaces: poor absorbers and poor emitters (good reflectors). Rule: <b>good absorber = good emitter</b>. Larger surface area also increases both rates.'},
+{m:'P4',sec:'P4.3',q:'Why is an emergency (survival) blanket shiny, and why are solar-panel pipes painted dull black?',a:'Shiny surface: <b>poor emitter and poor absorber, good reflector</b> — it reflects the person\u2019s own infrared back, slowing heat loss. Dull black pipes: <b>good absorber</b> — they capture lots of solar radiation; solar intensity is huge, so absorption outweighs emission and the water heats up.'},
+{m:'P4',sec:'P4.3',q:'Dewar (vacuum) flask for liquid nitrogen: inner shiny surface is a good emitter of radiation; radiation cannot travel through a vacuum; outer shiny surface is a poor absorber. Which statements are true?',a:'<b>Only the third.</b> Shiny surfaces are poor emitters/absorbers and good reflectors. Radiation is EM and <b>does cross a vacuum</b> — the vacuum blocks conduction and convection, not radiation. The shiny walls stop most of the radiation exchange.'},
+{m:'P4',sec:'P4.4',q:'Heat capacity vs specific heat capacity — definitions and units.',a:'<b>Heat capacity</b> of an object: energy to raise it by 1 °C (J °C⁻¹) — a property of that particular object. <b>Specific heat capacity</b>: energy to raise 1 kg of a substance by 1 °C (J kg⁻¹ °C⁻¹) — a property of the material. Formula: <span class="fm">c = E / (mΔT)</span>. Example: 100 J raises 0.50 kg of metal by 2.0 °C → c = 100/(0.50 × 2.0) = 100 J kg⁻¹ °C⁻¹.'},
+/*__P5__*/
+{m:'P5',sec:'P5.1',q:'Characteristic properties of solids, liquids, gases: flow, compressibility, density.',a:'<b>Solid</b>: rigid shape, practically incompressible, high density (~10³–10⁴ kg m⁻³). <b>Liquid</b>: flows, takes the shape of the bottom of its container, practically incompressible, high density (~10³). <b>Gas</b>: flows, fills the whole container, easily compressed, low density (~1 kg m⁻³ at room conditions). Liquids and gases are both <b>fluids</b>.'},
+{m:'P5',sec:'P5.1',q:'A sponge looks compressible — why is it still classed as a solid?',a:'The sponge is a <b>solid framework with air trapped in the pores</b>. Squeezing pushes the air out; the solid skeleton barely changes volume. Compressibility is about the particles themselves, not the object\u2019s structure.'},
+{m:'P5',sec:'P5.1',q:'Describe the particle model of the three states.',a:'<b>Solids</b>: strong attractive forces, particles close together in a fixed lattice, vibrating in place. <b>Liquids</b>: weaker forces, close together but randomly arranged, particles move around. <b>Gases</b>: negligible forces except during collisions, far apart, moving fast and randomly in straight lines between collisions.'},
+{m:'P5',sec:'P5.1',q:'A model shows particles close together but moving randomly. Another shows them vibrating in place. A third shows particles with almost no forces between them. Which states?',a:'Close + random movement = <b>liquid</b>. Vibrating in place = <b>solid</b>. Almost no forces = <b>gas</b>. Recognise each micro picture by spacing and motion, not by looks.'},
+{m:'P5',sec:'P5.1',q:'Using particles, explain why (a) solids keep their shape, (b) gases fill their container, (c) gases are easily compressed.',a:'(a) Strong forces hold particles in a fixed arrangement. (b) No attractive forces plus random motion → particles spread everywhere. (c) Large spacing means particles can be pushed closer together — the particles themselves are not squashed. Hence gas volume is easy to change, solid volume is not.'},
+{m:'P5',sec:'P5.1',q:'Use the particle model to explain why solids cannot convect.',a:'Convection needs particles to <b>move/swap places</b> in a circulating current. In a solid the particles are fixed in the lattice and can only vibrate — no bulk circulation is possible.'},
+{m:'P5',sec:'P5.2',q:'Explain gas pressure in terms of particles.',a:'Particles <b>collide with the container walls</b>; each collision exerts a tiny force; the enormous number of collisions adds up to the pressure — force per unit area — felt on the walls. More energetic or more frequent collisions → higher pressure.'},
+{m:'P5',sec:'P5.2',q:'What does temperature measure in a gas, in particle terms?',a:'Temperature is a macroscopic measure of hotness: higher temperature means particles have a <b>higher average speed</b>. Temperature and pressure are bulk properties — they are meaningless for a single particle.'},
+{m:'P5',sec:'P5.2',q:'Gas in a sealed container is heated — why does the pressure rise? Give two particle reasons.',a:'Particles <b>speed up</b>, so (1) they <b>hit the walls more often</b>, and (2) each collision is <b>more forceful</b> — greater average force per unit area → higher pressure. Same container, same number of particles.'},
+{m:'P5',sec:'P5.2',q:'State Boyle\u2019s law and its conditions.',a:'At <b>constant temperature</b>, for a <b>fixed mass</b> of gas: <span class="fm">P₁V₁ = P₂V₂</span>, i.e. P ∝ 1/V. Conditions: the gas must be sealed (no leaks) and its temperature kept constant. Doubling pressure halves volume, and vice versa.'},
+{m:'P5',sec:'P5.2',q:'Explain in particle terms why compressing a gas at constant temperature raises its pressure.',a:'Particles keep the same average speed (constant temperature) but have <b>less space</b>: they hit the walls <b>more frequently</b>. More collisions per second → higher pressure. (Compression itself heats the gas; once it returns to the original temperature, Boyle\u2019s law holds.)'},
+{m:'P5',sec:'P5.3',q:'Define melting point and boiling point. What happens to an impure substance?',a:'<b>Melting point</b>: the temperature at which solid ↔ liquid. <b>Boiling point</b>: temperature at which liquid ↔ gas throughout the sample. Impure substances melt/boil over a <b>range</b> of temperatures instead of at a single sharp point.'},
+{m:'P5',sec:'P5.3',q:'During melting or boiling, what happens to temperature and to energy?',a:'Temperature stays <b>constant</b> while latent heat is absorbed (solid→liquid, liquid→gas) or released (the reverse). The energy goes into <b>changing particle spacing</b> (overcoming forces), not raising temperature — shown as a flat platform on heating/cooling curves.'},
+{m:'P5',sec:'P5.3',q:'Define latent heat of fusion and latent heat of vaporisation.',a:'<b>Latent heat of fusion</b>: energy absorbed/released when melting/freezing at the melting point. <b>Latent heat of vaporisation</b>: energy absorbed/released when boiling/condensing at the boiling point. Specific latent heat: energy per unit mass, <span class="fm">E = mL</span>, unit J kg⁻¹. It is much bigger for vaporisation (forces must be broken completely).'},
+{m:'P5',sec:'P5.3',q:'3.0 kg of ice at 0 °C melts to water (Lf = 330 kJ kg⁻¹). What energy is needed?',a:'<span class="fm">E = mL = 3.0 × 330 000 = 990 kJ</span>. Note the temperature does not change during the whole process — all the energy goes into separating the particles.'},
+{m:'P5',sec:'P5.4',q:'Density formula and unit conversion.',a:'<span class="fm">ρ = m / V</span>. 1 g cm⁻³ = <b>1000 kg m⁻³</b>. Example: 2.7 g cm⁻³ = 2700 kg m⁻³; 0.500 kg of aluminium (2700 kg m⁻³) has volume 500/2.7 ≈ 185 cm³. Always check the unit before calculating.'},
+{m:'P5',sec:'P5.4',q:'How do you measure the density of (a) a regular solid, (b) an irregular solid, (c) a liquid?',a:'(a) <b>Balance</b> for mass; <b>ruler</b> for dimensions → volume. (b) Balance for mass; <b>displacement</b>: water-level rise in a measuring cylinder, or a displacement can — overflow volume = object volume. (c) Weigh an empty measuring cylinder, then with liquid; mass difference and the scale reading give m and V.'},
+{m:'P5',sec:'P5.4',q:'An object floats — how do you find its density by displacement?',a:'Tie it to a <b>sinker of known volume</b>: total displaced volume − sinker volume = object volume, then ρ = m/V. Example: 35.2 g object + 50 cm³ sinker together displace 105.0 cm³ → V = 55.0 cm³ → ρ = 0.640 g cm⁻³ = 640 kg m⁻³.'},
+{m:'P5',sec:'P5.4',q:'Compare solid/liquid/gas densities. What is the exception?',a:'Solids and liquids are both ~10³–10⁴ kg m⁻³ (solids usually ~1.1× denser than their own liquid); gases ~1 kg m⁻³ — liquid→gas density drops by roughly <b>1/1000</b>. Exception: <b>ice is LESS dense than liquid water</b> (open crystal structure). A solid can be less dense than a liquid.'},
+{m:'P5',sec:'P5.5',q:'Pressure = force/area: units, and how to increase or decrease pressure.',a:'<span class="fm">p = F / A</span>, unit pascal: 1 Pa = 1 N m⁻². A resting object exerts its weight. Increase pressure: bigger force or <b>smaller area</b> (pin point, knife edge). Decrease: <b>larger area</b> (snow shoes, skis, wide straps).'},
+{m:'P5',sec:'P5.5',q:'Hydrostatic pressure in a fluid — formula and the surprising result.',a:'<span class="fm">p = hρg</span>. It depends only on <b>depth, density and g</b> — NOT on the shape of the container. Fluid pressure acts <b>in all directions</b> at a point and increases with depth.'},
+{m:'P5',sec:'P5.5',q:'At depth 300 m in sea water (ρ = 1020 kg m⁻³, g = 10, atmospheric = 1.0 × 10⁵ Pa) the total pressure is 3.16 × 10⁶ Pa. Verify the depth.',a:'Water pressure = 3.16 × 10⁶ − 1.0 × 10⁵ = <b>3.06 × 10⁶ Pa</b>; h = p/(ρg) = 3.06 × 10⁶/(1020 × 10) = <b>300 m</b>. Remember to subtract atmospheric pressure — total = water + atmosphere.'},
+/*__P6__*/
+{m:'P6',sec:'P6.1',q:'A wave transfers energy — what does it NOT transfer?',a:'<b>Matter.</b> Particles vibrate about fixed positions but do not move with the wave: air does not travel from speaker to ear; no electrons travel from transmitter to receiver; water particles move up and down, not along. Only energy (and information) moves.'},
+{m:'P6',sec:'P6.1',q:'Transverse vs longitudinal waves — definitions and examples.',a:'<b>Transverse</b>: vibration perpendicular to travel — all EM waves, waves on a string, seismic S waves. <b>Longitudinal</b>: vibration parallel to travel — sound, ultrasound, spring compression waves, seismic P waves. <b>Water waves are a mixture</b> (elliptical motion; still no net transfer of matter).'},
+{m:'P6',sec:'P6.1',q:'Define peak, trough, compression, rarefaction.',a:'Transverse: <b>peak</b> (maximum upward displacement) and <b>trough</b> (maximum downward). Longitudinal: <b>compression</b> (particles squeezed together, pressure above atmospheric) and <b>rarefaction</b> (particles spread apart, pressure below atmospheric).'},
+{m:'P6',sec:'P6.1',q:'Mechanical vs electromagnetic waves — what separates them?',a:'<b>Mechanical</b> (sound, ultrasound, water, seismic, string): vibration of matter — needs a medium, cannot cross a vacuum. <b>EM</b>: vibration of electric and magnetic fields — no medium needed, travels at c = 3.0 × 10⁸ m/s in vacuum. Everything else (speed, v = fλ, reflection, refraction) behaves the same.'},
+{m:'P6',sec:'P6.1',q:'Bell-jar experiment: after pumping out the air, the bell is still visible but inaudible. Why?',a:'Light (EM) needs no medium — it still reaches the eye. Sound (mechanical) needs a medium — with no air there is <b>nothing to vibrate</b>, so no sound reaches the ear.'},
+{m:'P6',sec:'P6.1',q:'Define amplitude, wavelength, frequency, period.',a:'<b>Amplitude</b>: maximum displacement from equilibrium (loudness/brightness/intensity). <b>Wavelength</b>: distance between adjacent peaks or compressions. <b>Frequency</b>: complete vibrations per second, unit Hz. <b>Period</b>: time for one complete vibration, T = 1/f.'},
+{m:'P6',sec:'P6.1',q:'Six complete cycles take 108 ms. Find the frequency.',a:'T = 108/6 = 18 ms = 0.018 s; f = 1/T ≈ <b>56 Hz</b>. Also recall: highest audible 20 kHz has the shortest period — 1/20 000 = 0.00005 s = 50 μs.'},
+{m:'P6',sec:'P6.1',q:'Wave prefixes: ms, μs, ns; kHz, MHz, GHz.',a:'1 ms = 10⁻³ s; 1 μs = 10⁻⁶ s; 1 ns = 10⁻⁹ s. 1 kHz = 10³ Hz; 1 MHz = 10⁶ Hz; 1 GHz = 10⁹ Hz. Watch these in wavelength and frequency answers.'},
+{m:'P6',sec:'P6.1',q:'How do range finders measure distance, and where does the factor ½ come from?',a:'Use v = s/t, but the pulse travels <b>out and back</b>, so distance = ½ × speed × round-trip time. Example: a radio pulse to the Moon (380 000 km away) takes at least 2.25 s round trip: distance = ½ × 3.0 × 10⁸ × 2.5 ≈ 3.8 × 10⁸ m.'},
+{m:'P6',sec:'P6.1',q:'Derive v = fλ and find the wavelengths of 330 m/s sound at 20 Hz and 20 kHz.',a:'In time t the source emits ft complete waves in a train of length ftλ, so speed = length/time = <span class="fm">v = fλ</span>. At 20 Hz: λ = 330/20 = <b>16.5 m</b>. At 20 kHz: λ = 330/20 000 = <b>16.5 mm</b>. Only one formula — the range is the surprising part.'},
+{m:'P6',sec:'P6.2',q:'State the law of reflection. Where are the angles measured from?',a:'<b>Angle of incidence = angle of reflection</b>, both measured from the <b>normal</b> (the perpendicular to the surface). The incident ray, reflected ray and normal all lie in the same plane.'},
+{m:'P6',sec:'P6.2',q:'Why does a rough surface scatter light while a mirror reflects it regularly?',a:'On a smooth surface all normals are parallel, so reflected rays stay parallel — <b>regular (specular) reflection</b>. On a rough surface the normals point every which way, so rays reflect in all directions — <b>diffuse reflection</b>. That is why paper is visible from any angle but a mirror is not.'},
+{m:'P6',sec:'P6.2',q:'Refraction: what happens to direction when a wave slows down or speeds up at a boundary?',a:'Slowing down → <b>bends towards the normal</b>; speeding up → <b>bends away from the normal</b>. Hitting along the normal → direction unchanged (speed still changes). Water waves approaching a shallow shore slow down and bend towards the normal.'},
+{m:'P6',sec:'P6.2',q:'Reflection vs refraction: what happens to speed, frequency, wavelength, direction?',a:'<b>Reflection</b> (same medium): speed, frequency, wavelength all unchanged; only direction changes. <b>Refraction</b> (crossing a boundary): speed changes → wavelength changes the same way (faster → longer); <b>frequency never changes</b>; direction changes unless along the normal.'},
+{m:'P6',sec:'P6.2',q:'What can and cannot be concluded from the light–water-wave analogy?',a:'The shared behaviour — reflection, refraction, interference, v = fλ — shows both are waves. But water waves are <b>mechanical</b> (matter vibrates, need a medium) while light is <b>EM</b> (fields vibrate, vacuum OK). The analogy cannot be stretched to everything.'},
+{m:'P6',sec:'P6.2',q:'Doppler effect: what does an observer hear from an approaching source / a receding source?',a:'<b>Approaching</b>: waves compressed — shorter wavelength, higher frequency (higher pitch). <b>Receding</b>: stretched — longer wavelength, lower frequency. Zero relative motion along the line of sight → no shift.'},
+{m:'P6',sec:'P6.2',q:'When is there no Doppler shift?',a:'When the motion is <b>perpendicular to the line of sight</b> — no component towards or away from the observer. The shift is bigger for faster motion along the line and for a sound source is independent of the speed of sound in the way you might expect — it is about compression of waves.'},
+{m:'P6',sec:'P6.2',q:'Give applications of the Doppler effect.',a:'Ambulance/siren pitch change; <b>speed cameras and radar</b> (bounce, measure shift); ultrasound <b>blood-flow measurement</b>; astronomy — spectral lines show galaxies moving towards us (blueshift) or away (redshift).'},
+{m:'P6',sec:'P6.2',q:'A bee buzzes at 180 Hz when stationary. Compare: hovering, flying away, flying towards, circling your head.',a:'Hovering: <b>180 Hz</b> (no relative motion). Flying away: <b>&lt; 180 Hz</b>. Flying towards: <b>&gt; 180 Hz</b>. Circling your head: <b>180 Hz</b> — the motion is perpendicular, no line-of-sight component.'},
+{m:'P6',sec:'P6.2',q:'Water waves cross from region X into Y; wavefronts make angle θ with the boundary in X and φ in Y. Which is the angle of incidence, and which region is faster?',a:'The angle of incidence is the angle between <b>wavefront and boundary</b> (θ): wavefronts ⊥ propagation and the normal ⊥ boundary, so the paired angles match. Larger angle of incidence → <b>faster medium</b>: sin i/sin r = vX/vY, so if θ &gt; φ then vX &gt; vY. Watch which angle the question quotes — to the boundary, not to the normal.'},
+{m:'P6',sec:'P6.2',q:'A cyclist rushes towards a wall and shouts; the echo sounds quieter but higher pitched. Explain both.',a:'Quieter → <b>lower amplitude</b> (the sound loses energy on the round trip). Higher pitch → <b>double Doppler shift</b>: as a moving source the cyclist raises the frequency heard by the wall; the wall then acts as a stationary source and the approaching cyclist hears it raised again. Two shifts, same direction.'},
+{m:'P6',sec:'P6.3',q:'Plane mirror: where is the image, and is it real or virtual?',a:'The reflected rays appear to come from <b>behind the mirror</b> — a virtual image, the same distance behind the mirror as the object is in front, same size, laterally inverted. <b>Virtual</b>: the rays do not actually meet there — the eye only thinks they do.'},
+{m:'P6',sec:'P6.3',q:'A plane mirror is rotated by 2°. By how much does the reflected ray turn?',a:'<b>4°.</b> The normal turns 2°, so the angle of incidence and angle of reflection each change by 2°; the reflected ray therefore turns by 2 × 2 = 4°. Doubling the mirror turn doubles the ray turn.'},
+{m:'P6',sec:'P6.3',q:'Binocular prisms: how does light return along its path?',a:'<b>Total internal reflection</b>: light strikes each prism face at 45° (beyond the critical angle), and each reflection turns the ray through 90°; two reflections turn it through 180° — the ray exits parallel to its incoming direction. The prism angle is 90°.'},
+{m:'P6',sec:'P6.3',q:'White light passes through a triangular prism — what happens and why?',a:'<b>Dispersion</b>: different colours travel at different speeds in glass, so they refract by different amounts and spread into a spectrum. <b>Blue</b> (shorter wavelength) slows more and bends most; <b>red</b> bends least. Rainbows use the same effect in droplets.'},
+{m:'P6',sec:'P6.3',q:'A ray enters a spherical water droplet, reflects inside, and exits. What does each boundary do?',a:'Entering: light <b>slows down</b> (air → water) and bends <b>towards the normal</b>. Inside: <b>reflection</b> at the back of the droplet. Exiting: light <b>speeds up</b> (water → air) and bends <b>away from the normal</b>. In diagrams, reject any ray that bends the wrong way at either surface.'},
+{m:'P6',sec:'P6.3',q:'Why does a pool look shallower than it really is?',a:'Light from the bottom leaves the water, <b>speeds up and bends away from the normal</b>; the eye traces it back along a straight line and places the bottom higher than it is. The same effect makes a <b>star appear slightly above its true position</b> (light bends as it enters the atmosphere).'},
+{m:'P6',sec:'P6.3',q:'Ray enters glass from air — which way does it bend? Ray leaves glass into air? Which boundary bends more, air–glass or air–water?',a:'Air→glass: <b>slows, bends towards the normal</b>. Glass→air: <b>speeds up, bends away</b>. Air–glass bends more than air–water because the speed change is bigger (3.0 × 10⁸ vs 2.0 × 10⁸ vs 2.3 × 10⁸ m/s).'},
+{m:'P6',sec:'P6.4',q:'Sound: what sets its frequency and what sets its speed?',a:'Frequency = the <b>vibration source</b> (speaker cone, string, vocal cords). Speed = a <b>property of the medium</b>, not the source — it changes with temperature/pressure but never with pitch. Amplitude also comes from the source.'},
+{m:'P6',sec:'P6.4',q:'Can sound travel through a vacuum? Through which media can it travel?',a:'<b>No.</b> Sound is particle vibration — it needs a medium. It travels through <b>solids, liquids and gases</b> (fastest in solids, because particles are closest) but not through a vacuum.'},
+{m:'P6',sec:'P6.4',q:'Loudness ↔ amplitude, pitch ↔ frequency: how do these appear on an oscilloscope?',a:'Taller trace (larger amplitude) = <b>louder</b>. Closer peaks (shorter period, higher frequency) = <b>higher pitch</b>. An oscilloscope displays the pressure variation — amplitude and period are read directly off the screen.'},
+{m:'P6',sec:'P6.4',q:'Sound is a longitudinal wave — describe its compressions/rarefactions and how dust particles behave.',a:'Particles vibrate <b>parallel to the direction of travel</b>, creating compressions (high pressure) and rarefactions (low pressure). Dust particles in the path vibrate back and forth along the wave direction — they do <b>not</b> travel with the wave.'},
+{m:'P6',sec:'P6.4',q:'What produces echoes, and how do you time repeated echoes?',a:'Sound <b>reflects from surfaces</b> (obeying the reflection law); the echo arrives later because its path is longer. Standing 170 m from a cliff (speed 340 m/s), the echo returns after 1 s — knock at 2 s intervals to hear each echo, i.e. at a frequency of <b>0.50 Hz</b>. Echoes are useful for sensing depth/distance.'},
+{m:'P6',sec:'P6.4',q:'State the human hearing range and the wavelengths at its extremes (sound speed 330 m/s).',a:'<b>20 Hz to 20 kHz.</b> At 20 Hz: λ = 330/20 = <b>16.5 m</b>. At 20 kHz: λ = 330/20 000 = <b>1.65 cm</b>. High-frequency hearing declines with age.'},
+{m:'P6',sec:'P6.4',q:'Compare hearing ranges: dogs, bats — and is 500 Hz audible to humans?',a:'Dogs hear up to about <b>45 kHz</b>, bats up to about <b>90–100 kHz</b> (minimum around 2 kHz — tuned for echolocation, they miss low sounds). <b>500 Hz is well inside the human range</b> and below bat hearing. Ranges overlap: humans and dogs both hear most everyday sounds.'},
+{m:'P6',sec:'P6.4',q:'What is ultrasound? How does sonar measure depth?',a:'<b>Ultrasound: longitudinal sound above 20 kHz</b> — inaudible to most humans but still a mechanical wave (no vacuum). Sonar: send a pulse, time the echo, <b>d = vt/2</b>. Example: speed 1500 m/s, echo after 0.40 s → depth = 1500 × 0.40/2 = <b>300 m</b>.'},
+{m:'P6',sec:'P6.4',q:'How does a prenatal scan image the inside of the body, and why is it safe?',a:'Ultrasound pulses enter the body; each tissue boundary <b>reflects part of the pulse</b>; the timing of the echoes reveals the positions of the boundaries, built into an image. It is <b>non-ionising</b> — harmless to tissue — which is why it is used on unborn babies. The same principle finds cracks in metal.'},
+{m:'P6',sec:'P6.4',q:'Ultrasound crack detection: pulses reflect from a crack (time t₁) and the far end (time t₂ &gt; t₁); the rod is length L. What is the crack-to-far-end distance?',a:'Far end: v = 2L/t₂ (round trip). Crack from start: d = vt₁/2 = Lt₁/t₂. So crack-to-far-end = L − Lt₁/t₂ = <b>L(t₂ − t₁)/t₂</b>. Trap: t₁ and t₂ are already <b>round-trip</b> times — divide by 2 only once; do not divide the final distance by 2 again.'},
+{m:'P6',sec:'P6.5',q:'List the seven parts of the EM spectrum in order of increasing frequency.',a:'<b>Radio → microwave → infrared → visible → ultraviolet → X-ray → gamma.</b> Increasing frequency = decreasing wavelength. All travel at c in a vacuum; all are transverse.'},
+{m:'P6',sec:'P6.5',q:'What actually vibrates in an EM wave? What do absorbing materials do with them?',a:'<b>Electric and magnetic fields</b> oscillate — that is why EM waves cross a vacuum. Absorption has three effects: <b>heating</b> (IR heater, microwave), making <b>electrons vibrate</b> at the wave frequency (radio reception), and <b>ionisation</b> (X-rays/gamma in tissue).'},
+{m:'P6',sec:'P6.5',q:'What produces EM waves?',a:'Anything that makes <b>electric charge vibrate</b> emits EM waves. Every object above absolute zero emits IR (hotter → more radiation, higher frequencies); heating metal: red-hot then white-hot; the Sun emits mostly IR, plus visible and UV.'},
+{m:'P6',sec:'P6.5',q:'How are X-rays and gamma rays distinguished at the same wavelength?',a:'By <b>production</b>: X-rays — fast electrons hitting a metal target; gamma — radioactive decay. Microwaves and radio waves of the same wavelength are <b>completely identical</b> waves. The boundaries between spectrum regions are not sharp.'},
+{m:'P6',sec:'P6.5',q:'Match applications: sterilisation, medical tracer, thickness monitoring — and which radiation + why.',a:'<b>Sterilisation: gamma</b> — penetrating, kills microbes without making items radioactive; long half-life keeps working. <b>Tracer: gamma with a SHORT half-life</b> — least ionising, penetrates out to detectors, clears from the body quickly. <b>Thickness: beta</b> — partially absorbed, so the transmitted count is sensitive to thickness; alpha is stopped completely, gamma penetrates too much.'},
+{m:'P6',sec:'P6.5',q:'Give the main hazards of EM radiation.',a:'X-rays/gamma: ionise atoms → cell and DNA damage, cancer risk, mutations. UV: sunburn, skin cancer. IR/microwave: heating and tissue damage (microwave ovens are shielded). Visible: retina damage — never stare at the Sun. Ionising effects are the big one for X/gamma.'},
+{m:'P6',sec:'P6.5',q:'A distant galaxy\u2019s spectral lines are stretched to longer wavelengths. What does this show, and can blue light become UV?',a:'The galaxy is moving <b>away</b> from us — redshift; the more distant the galaxy, the bigger the shift (it recedes faster) — evidence for expansion. Gamma stretched to microwave: possible. <b>Blue → UV: impossible</b> — receding motion only shifts towards red/longer wavelengths.'},
+{m:'P6',sec:'P6.5',q:'c = fλ: what stays constant when light enters glass?',a:'<b>Frequency stays constant</b> (it is set by the source); speed drops, so wavelength shortens by the same factor. Ordering the spectrum by λ or f works in any single medium — just never mix the two.'},
+/*__P7__*/
+{m:'P7',sec:'P7.1',q:'Describe the nuclear model of the atom.',a:'A tiny, very dense nucleus (protons + neutrons) at the centre holds <b>&gt;99.9% of the mass</b> but occupies about 1/100 000 of the atom\u2019s radius; the rest is mostly <b>empty space</b> with electrons, which set the atom\u2019s size. The strong nuclear force holds protons together against their electrostatic repulsion.'},
+{m:'P7',sec:'P7.1',q:'Relative charges and masses of proton, neutron, electron.',a:'Proton: charge <b>+1</b>, mass <b>1</b>. Neutron: charge <b>0</b>, mass <b>1</b>. Electron: charge <b>−1</b>, mass <b>1/2000</b> (negligible). The nucleus is always positive.'},
+{m:'P7',sec:'P7.1',q:'Atomic number vs mass number — how do you find the number of neutrons?',a:'Atomic number Z = number of <b>protons</b> (defines the element). Mass number A = protons + neutrons. <b>Neutrons = A − Z</b>. In a neutral atom, electrons = protons = Z.'},
+{m:'P7',sec:'P7.1',q:'Define isotope. How do you recognise two isotopes of the same element?',a:'Isotopes: same element (<b>same Z / proton number</b>) but different neutron numbers. Examples: hydrogen-1, -2, -3. Only the proton number identifies the element — you cannot decide from the mass number alone.'},
+{m:'P7',sec:'P7.1',q:'Explain nuclide notation using ²³⁵₉₂U.',a:'Bottom-left subscript = atomic number Z = <b>92 protons</b>. Top-left superscript = mass number A = <b>235 nucleons</b>. Neutrons = 235 − 92 = <b>143</b>. Shorthand like U-235 gives only the mass number. Z and A together pin down the nuclide.'},
+{m:'P7',sec:'P7.1',q:'What causes ionisation, and what does NOT change in the nucleus?',a:'Ionisation = an atom <b>gaining or losing electrons</b>, making a positive or negative ion. Protons and neutrons are never gained or lost in ionisation — <b>Z and A stay the same</b>. Ionisation can come from friction, ionic bonding, or ionising radiation.'},
+{m:'P7',sec:'P7.1',q:'An ion diagram shows 5 electrons. Which alternative shows the same element, a different isotope, and the opposite charge?',a:'<b>Same element</b> → same proton number (count the nucleus). <b>Different isotope</b> → different neutron number. <b>Opposite charge</b> → electrons differ from protons in the opposite direction (negative ion ↔ positive ion). Check the nucleus for protons AND neutrons — never decide from the electron count alone.'},
+{m:'P7',sec:'P7.2',q:'Where do α, β, γ emissions come from?',a:'From an <b>unstable nucleus</b>. The nucleus decays spontaneously, emitting α, β and/or γ, often down a decay chain, until it reaches a stable state.'},
+{m:'P7',sec:'P7.2',q:'What is meant by the random nature of decay?',a:'You cannot predict <b>which nucleus decays when</b>, and you cannot trigger or speed it up — heating, pressure, or chemical state make no difference. But for a large number of nuclei the decay rate is statistically predictable (like dice).'},
+{m:'P7',sec:'P7.2',q:'State the nature of alpha, beta and gamma.',a:'<b>Alpha</b>: a helium nucleus ⁴₂He (2 protons + 2 neutrons), charge +2, mass 4× a proton, speed ~0.1c. <b>Beta</b>: a fast electron ⁰₋₁e, charge −1, mass ~1/2000 of a proton, speed ~0.8c. <b>Gamma</b>: electromagnetic radiation — no mass, no charge, speed c.'},
+{m:'P7',sec:'P7.2',q:'How does each type of decay change A and Z?',a:'<b>Alpha</b>: A − 4, Z − 2 (loses a helium nucleus). <b>Beta</b>: A unchanged, Z + 1 (a neutron becomes a proton and emits an electron). <b>Gamma</b>: A and Z unchanged — the nucleus only loses energy.'},
+{m:'P7',sec:'P7.2',q:'What two quantities are conserved in every nuclear equation?',a:'<b>Mass number (nucleons)</b> and <b>charge (total Z)</b> are conserved on both sides. Use these to find the missing A or Z in a decay equation — e.g. after α, the daughter has Z−2 and A−4.'},
+{m:'P7',sec:'P7.2',q:'Explain beta emission at the particle level.',a:'Inside the nucleus a <b>neutron changes into a proton</b> (which stays, raising Z by 1) and emits the beta particle — an electron — which leaves the nucleus. A is unchanged because a nucleon stays a nucleon. Z rises by exactly 1, so the element changes.'},
+{m:'P7',sec:'P7.3',q:'Order α, β, γ by penetrating ability; what stops each?',a:'<b>α &lt; β &lt; γ.</b> Alpha: stopped by <b>paper or skin</b>, a few cm of air. Beta: stopped by a few mm of <b>thin metal (aluminium)</b>. Gamma: needs <b>several cm of lead or thick concrete</b>; travels hundreds of metres in air.'},
+{m:'P7',sec:'P7.3',q:'Order α, β, γ by ionising ability and explain why the order is the reverse.',a:'<b>α &gt; β &gt; γ.</b> Alpha is large, doubly charged, slow, and heavy — it ionises atoms strongly and runs out of energy quickly, so it does not travel far. Gamma is uncharged and interacts weakly — it penetrates but ionises least. The two tables are mirror images of each other.'},
+{m:'P7',sec:'P7.3',q:'α, β, γ in electric or magnetic fields — describe the deflections.',a:'α and β are deflected in <b>opposite directions</b> (opposite charges); β deflects far more (about 8000× lighter than α). <b>γ is not deflected</b> (uncharged). In a three-beam diagram: the two bent beams are α and β, the straight one is γ; the most-ionising is α.'},
+{m:'P7',sec:'P7.3',q:'What is background radiation, and where does it come from?',a:'The low-level radiation always present: <b>&gt;80% natural</b> (radon gas, rocks/building materials, cosmic rays, food and drink), <b>&lt;20% artificial</b> (medical uses dominate; plus nuclear power and tests). Always measure a source only after subtracting the background count.'},
+{m:'P7',sec:'P7.3',q:'A source reads 220 counts per minute and background is 20 cpm. Half-life is 50 min. Why must you subtract background?',a:'The true count is 220 − 20 = <b>200 cpm</b>; after one half-life the net count is 100 cpm (120 gross). Using gross readings bends the decay curve and gives the wrong half-life. Subtract first, then halve.'},
+{m:'P7',sec:'P7.3',q:'Choose a source for (a) sterilising instruments, (b) medical tracer, (c) sheet-thickness monitoring — and justify each.',a:'(a) <b>Gamma, long half-life</b>: penetrates and kills microbes without making items radioactive. (b) <b>Gamma, short half-life</b>: least ionising, penetrates out to detectors, clears the body quickly. (c) <b>Beta</b>: partially absorbed, so transmitted count is thickness-sensitive; alpha is stopped completely, gamma penetrates too much.'},
+{m:'P7',sec:'P7.3',q:'Inside the body vs outside — which is most dangerous in each case, and why?',a:'<b>Inside</b>: alpha most dangerous (most ionising density, right against cells), beta next, gamma least (passes through with fewer collisions). <b>Outside</b>: gamma most dangerous (penetrates the whole body), beta can reach sub-skin tissue, alpha harmless outside (skin stops it).'},
+{m:'P7',sec:'P7.3',q:'How is exposure to ionising radiation reduced?',a:'<b>Distance</b> (long tongs), <b>shielding</b> (lead containers), <b>limiting time</b> near sources, protective clothing/gloves. The guiding idea: minimise dose, where dose is exposure time × intensity.'},
+{m:'P7',sec:'P7.4',q:'Define half-life and its graphical meaning.',a:'The average time for <b>half the nuclei to decay</b>. Since count rate ∝ number of undecayed nuclei, it is also the time for the count rate to halve (same detector position). Read it from a graph by taking any value and finding when it halves — e.g. 80% → 40%.'},
+{m:'P7',sec:'P7.4',q:'A decay graph shows parent X falling and daughter Y rising. What relationship always holds?',a:'<b>%X + %Y = 100%</b> at every moment (no other products). Half-life from the X curve = time for X to fall from, say, 80% to 40% — the same time as 60% to 30%. The curves are mirror images when no other products exist.'},
+{m:'P7',sec:'P7.4',q:'A source has count rate 4000 cpm and a half-life of 10 hours. What is the rate after 50 hours?',a:'50 h = 5 half-lives: 4000 → 2000 → 1000 → 500 → 250 → <b>125 cpm</b>. General rule: multiply by (½)ⁿ where n = number of half-lives.'},
+{m:'P7',sec:'P7.4',q:'A count falls from 600 to 75 counts per second in 12 hours — find the half-life. And: a source gives 64 000 cps with a 10 s half-life — what was it 20 s ago?',a:'600 → 300 → 150 → 75 = 3 halvings in 12 h → half-life <b>4 h</b>. 20 s ago = 2 half-lives earlier: double twice — 64 000 → <b>256 000 cps</b>. Going backwards you double, not halve.'},
+];
+
+const COLOR = {P1:'#3b6fb6',P2:'#7a4fd0',P4:'#c4711f',P5:'#2e8b57',P6:'#c0392b',P7:'#8e3b5f'};
+
+let cur = CARDS.slice();
+let mod = 'all';
+let query = '';
+
+function counts(){
+  const by = {};
+  CARDS.forEach(c => { by[c.m] = (by[c.m]||0) + 1; });
+  document.getElementById('nAll').textContent = CARDS.length;
+  ['P1','P2','P4','P5','P6','P7'].forEach(m => {
+    const el = document.getElementById('n'+m);
+    if (el) el.textContent = by[m] || 0;
+  });
+}
+
+function render(){
+  let list = cur;
+  if (mod !== 'all') list = list.filter(c => c.m === mod);
+  if (query){
+    const q = query.toLowerCase();
+    list = list.filter(c => (c.q + ' ' + c.a).toLowerCase().indexOf(q) !== -1);
+  }
+  const grid = document.getElementById('grid');
+  grid.innerHTML = list.map(c =>
+    '<div class="fc" data-m="'+c.m+'"><div class="fc-inner">'+
+      '<div class="fc-face fc-front"><div class="fc-top" style="background:'+COLOR[c.m]+'"></div>'+
+        '<div class="fc-body"><span class="fc-sec">'+c.m+' · '+c.sec+'</span>'+
+        '<div class="fc-q">'+c.q+'</div>'+
+        '<div class="fc-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg> click to reveal answer</div></div></div>'+
+      '<div class="fc-face fc-back"><div class="fc-top" style="background:'+COLOR[c.m]+'"></div>'+
+        '<div class="fc-body"><span class="fc-sec">'+c.m+' · '+c.sec+'</span>'+
+        '<div class="fc-a">'+c.a+'</div></div></div>'+
+    '</div></div>'
+  ).join('');
+  document.getElementById('none').style.display = list.length ? 'none' : 'block';
+  document.getElementById('cnt').textContent = list.length + ' / ' + CARDS.length;
+  document.querySelectorAll('#tabs .tab').forEach(t => t.classList.toggle('active', t.dataset.m === mod));
+}
+
+document.addEventListener('click', function(e){
+  const card = e.target.closest('.fc');
+  if (card){ card.classList.toggle('flipped'); return; }
+  const tab = e.target.closest('#tabs .tab');
+  if (tab){ mod = tab.dataset.m; render(); return; }
+  if (e.target.closest('#shuf')){
+    const arr = cur.slice();
+    for (let i = arr.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    cur = arr; render();
+    return;
+  }
+});
+
+document.getElementById('q').addEventListener('input', function(){
+  query = this.value.trim();
+  render();
+});
+
+counts();
+render();
+</script>
+</body>
+</html>

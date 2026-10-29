@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESAT 物理备考工具包 · 首页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b2a4a'/%3E%3Cpath d='M8 22 L13 10 L16 19 L20 7 L24 22' stroke='%23ffffff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='7' r='1.8' fill='%23f2b705'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+  :root{
+    --ink:#1b2a4a;
+    --paper:#f4f6fb;
+    --card:#ffffff;
+    --line:#dbe2ef;
+    --muted:#5b6b85;
+    --accent:#2b4a8c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Noto Sans SC','Microsoft YaHei',system-ui,sans-serif;
+    background:var(--paper);color:var(--ink);font-size:15px;line-height:1.75;
+  }
+  /* ===== 顶栏 ===== */
+  header{
+    background:var(--ink);color:#fff;
+    padding:12px 20px;
+    box-shadow:0 2px 10px rgba(20,35,70,.18);
+  }
+  header .wrap{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:14px;}
+  header .logo{
+    width:34px;height:34px;border-radius:8px;background:#fff;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+  }
+  header .logo svg{width:22px;height:22px;}
+  header .t1{font-size:18px;font-weight:900;letter-spacing:.5px;}
+  header .t2{font-size:12px;color:#a9b8d8;margin-top:1px;}
+  main{max-width:1000px;margin:0 auto;padding:28px 20px 70px;}
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg,#1b2a4a 0%,#2b4a8c 100%);
+    color:#fff;border-radius:16px;padding:30px 32px;margin-bottom:24px;
+  }
+  .hero h1{font-size:27px;font-weight:900;letter-spacing:.5px;}
+  .hero p{color:#c3cfe9;font-size:13.5px;margin-top:8px;max-width:680px;}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .hero .meta span{
+    font-size:12px;font-weight:700;background:rgba(255,255,255,.12);
+    border-radius:20px;padding:3px 12px;
+  }
+  /* ===== 入口卡片 ===== */
+  .entries{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:26px;}
+  .entry{
+    display:flex;flex-direction:column;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:24px 24px 20px;text-decoration:none;color:var(--ink);
+    transition:box-shadow .18s,transform .18s,border-color .18s;
+  }
+  .entry:hover{
+    box-shadow:0 10px 26px rgba(30,50,100,.14);
+    transform:translateY(-3px);border-color:#b9c8e4;
+  }
+  .entry .ico{
+    width:48px;height:48px;border-radius:12px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  }
+  .entry .ico svg{width:26px;height:26px;}
+  .entry .ico.blue{background:#e7eefb;}
+  .entry .ico.blue svg{stroke:#2b4a8c;}
+  .entry .ico.purple{background:#efe9fb;}
+  .entry .ico.purple svg{stroke:#7a4fd0;}
+  .entry h2{font-size:19px;font-weight:900;}
+  .entry .en{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px;}
+  .entry .desc{font-size:13.5px;color:var(--muted);margin-top:10px;flex:1;}
+  .entry .features{margin:12px 0 16px;}
+  .entry .features li{
+    list-style:none;font-size:12.5px;color:var(--ink);
+    display:flex;align-items:flex-start;gap:8px;margin:6px 0;
+  }
+  .entry .features svg{width:15px;height:15px;flex:0 0 auto;margin-top:3px;}
+  .entry .go{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:14px;font-weight:900;
+  }
+  .entry.blue .go{color:var(--accent);}
+  .entry.purple .go{color:#7a4fd0;}
+  .entry .go svg{width:16px;height:16px;transition:transform .18s;}
+  .entry:hover .go svg{transform:translateX(4px);}
+  /* ===== 使用说明 ===== */
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin-bottom:18px;
+  }
+  .panel h3{font-size:16px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:9px;}
+  .panel h3 svg{width:19px;height:19px;stroke:var(--accent);}
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;}
+  .notes li{
+    list-style:none;font-size:13px;color:var(--muted);
+    display:flex;align-items:flex-start;gap:9px;
+  }
+  .notes svg{width:16px;height:16px;flex:0 0 auto;margin-top:3px;stroke:var(--accent);}
+  .notes b{color:var(--ink);font-weight:700;}
+  .disclaimer{
+    background:#fdf6ec;border:1px solid #ecd9b8;border-radius:12px;
+    padding:14px 18px;font-size:12.5px;color:#7a5c1f;
+    display:flex;align-items:flex-start;gap:10px;
+  }
+  .disclaimer svg{width:18px;height:18px;flex:0 0 auto;margin-top:2px;stroke:#c4711f;}
+  footer{
+    max-width:1000px;margin:0 auto;padding:18px 20px 30px;
+    color:#8a97ad;font-size:12.5px;border-top:1px solid var(--line);
+  }
+  /* ===== 响应式 ===== */
+  @media(max-width:680px){
+    .entries{grid-template-columns:1fr;}
+    .notes{grid-template-columns:1fr;}
+    .hero{padding:24px 22px;}
+    .hero h1{font-size:22px;}
+    header .t2{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="none"/><path d="M8 22 L13 10 L16 19 L20 7 L24 22" stroke="#1b2a4a" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="7" r="1.9" fill="#f2b705"/></svg>
+    </div>
+    <div>
+      <div class="t1">ESAT 物理备考工具包</div>
+      <div class="t2">Physics Revision Notes &amp; Concept Flashcards</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>考纲逐条讲义 + 概念闪卡</h1>
+    <p>两份纯静态网页工具，浏览器打开即用，无需安装、无需联网、无需注册。覆盖 ESAT 物理全部考纲模块，支持掌握度自查与翻转回忆复习。</p>
+    <div class="meta">
+      <span>单文件 HTML</span>
+      <span>离线可用</span>
+      <span>进度本地保存</span>
+      <span>适配手机与电脑</span>
+    </div>
+  </section>
+
+  <!-- 入口卡片 -->
+  <section class="entries">
+    <a class="entry blue" href="./review-notes.html">
+      <div class="ico blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h5"/></svg>
+      </div>
+      <h2>弱项复习讲义</h2>
+      <div class="en">Revision Notes · Syllabus Checklist</div>
+      <div class="desc">按考纲模块逐条讲解，每个考点配中文释义、公式与易错提示，内置掌握度自查清单。</div>
+      <ul class="features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#2b4a8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>考纲逐条对照，不漏考点</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#2b4a8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>勾选掌握状态，弱项一目了然</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#2b4a8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>模块进度统计与总览</li>
+      </ul>
+      <span class="go">打开复习讲义
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+
+    <a class="entry purple" href="./flashcards.html">
+      <div class="ico purple">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="16" rx="2" transform="rotate(-6 10 13)"/><rect x="7" y="3" width="14" height="16" rx="2" transform="rotate(6 14 11)"/></svg>
+      </div>
+      <h2>概念 Flashcards</h2>
+      <div class="en">Concept Recall · Flip Cards</div>
+      <div class="desc">点击翻转的回忆卡片，正面问题、背面答案，可按模块筛选、关键词搜索、随机洗牌。</div>
+      <ul class="features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7a4fd0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>点击翻转，先回忆再核对</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7a4fd0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>按模块筛选 + 关键词搜索</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7a4fd0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>随机洗牌，打乱顺序复习</li>
+      </ul>
+      <span class="go">打开闪卡
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+  </section>
+
+  <!-- 使用说明 -->
+  <section class="panel">
+    <h3>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      使用说明
+    </h3>
+    <ul class="notes">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span><b>进度保存在本地浏览器：</b>勾选与卡片状态通过 localStorage 存储，不会上传到任何服务器。</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span><b>换浏览器会丢失进度：</b>清除浏览器缓存、使用无痕模式或更换设备后，自查记录需要重新勾选。</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><span><b>离线也能用：</b>下载 HTML 文件后双击打开，不联网即可完整运行（字体需联网加载，不影响使用）。</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><span><b>手机电脑均可：</b>页面自适应屏幕尺寸，手机浏览器直接打开即可复习。</span></li>
+    </ul>
+  </section>
+
+  <!-- 免责声明 -->
+  <div class="disclaimer">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>本工具为个人备考整理的学习笔记，<b>非 UAT‑UK 官方材料</b>，仅供学习自用，请勿商用；考试内容与要求请以官方发布的 ESAT Guide 原版文件为最终依据。</span>
+  </div>
+</main>
+
+<footer>
+  ESAT Physics Revision Toolkit · 个人学习项目 · 整理参考 UAT‑UK ESAT Guide – Physics
+</footer>
+
+</body>
+</html>

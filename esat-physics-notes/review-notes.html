@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESAT 物理弱项复习讲义 · 考纲逐条对照</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b2a4a'/%3E%3Cpath d='M8 22 L13 10 L16 19 L20 7 L24 22' stroke='%23ffffff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='7' r='1.8' fill='%23f2b705'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+  :root{
+    --ink:#1b2a4a;
+    --paper:#f4f6fb;
+    --card:#ffffff;
+    --line:#dbe2ef;
+    --muted:#5b6b85;
+    --accent:#2b4a8c;
+    --p1:#3b6fb6; --p2:#7a4fd0; --p3:#1f8a70; --p4:#c4711f; --p5:#2e8b57; --p6:#c0392b; --p7:#8e3b5f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans SC','Microsoft YaHei',system-ui,sans-serif;
+    background:var(--paper);color:var(--ink);font-size:15px;line-height:1.75;
+  }
+  /* ===== 顶栏 ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);color:#fff;
+    padding:12px 20px;
+    box-shadow:0 2px 10px rgba(20,35,70,.18);
+  }
+  header .wrap{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  header .logo{
+    width:34px;height:34px;border-radius:8px;background:#fff;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+  }
+  header .logo svg{width:22px;height:22px;}
+  header .t1{font-size:18px;font-weight:900;letter-spacing:.5px;white-space:nowrap;}
+  header .t2{font-size:12px;color:#a9b8d8;margin-top:1px;white-space:nowrap;}
+  nav{position:sticky;top:58px;z-index:40;background:#fff;border-bottom:1px solid var(--line);}
+  nav .wrap{max-width:1120px;margin:0 auto;display:flex;overflow-x:auto;gap:2px;padding:0 8px;}
+  nav button{
+    appearance:none;border:0;background:none;cursor:pointer;
+    font-family:inherit;font-size:14px;font-weight:700;color:var(--muted);
+    padding:12px 14px;min-height:44px;white-space:nowrap;position:relative;transition:color .15s;
+  }
+  nav button:hover{color:var(--ink);}
+  nav button.active{color:var(--accent);}
+  nav button.active::after{
+    content:'';position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;
+    background:currentColor;
+  }
+  main{max-width:1120px;margin:0 auto;padding:24px 20px 80px;}
+  .view{display:none;}
+  .view.active{display:block;}
+  /* ===== 总览 ===== */
+  .hero{
+    background:linear-gradient(135deg,#1b2a4a 0%,#2b4a8c 100%);
+    color:#fff;border-radius:16px;padding:28px 30px;margin-bottom:22px;
+  }
+  .hero h1{font-size:26px;font-weight:900;letter-spacing:.5px;}
+  .hero p{color:#c3cfe9;font-size:13px;margin-top:6px;max-width:720px;}
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;}
+  .stat{
+    background:rgba(255,255,255,.12);border-radius:10px;padding:10px 16px;min-width:110px;
+  }
+  .stat .n{font-size:22px;font-weight:900;}
+  .stat .l{font-size:12px;color:#aebfdf;}
+  .modgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;}
+  .modcard{
+    background:var(--card);border-radius:12px;border:1px solid var(--line);overflow:hidden;
+    cursor:pointer;transition:box-shadow .15s,transform .15s;
+  }
+  .modcard:hover{box-shadow:0 6px 18px rgba(30,50,100,.12);transform:translateY(-2px);}
+  .modcard .bar{height:6px;}
+  .modcard .body{padding:14px 16px;}
+  .modcard .m{font-size:16px;font-weight:900;}
+  .modcard .d{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6;}
+  .modcard .tag{
+    display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:20px;
+    padding:2px 10px;margin-top:10px;
+  }
+  /* ===== 模块视图 ===== */
+  .modhead{
+    display:flex;align-items:center;gap:14px;border-radius:14px;
+    padding:18px 22px;color:#fff;margin-bottom:6px;
+  }
+  .modhead .code{font-size:26px;font-weight:900;opacity:.9;}
+  .modhead .name{font-size:20px;font-weight:900;}
+  .modhead .en{font-size:12.5px;opacity:.85;margin-top:2px;}
+  .modmeta{display:flex;flex-wrap:wrap;gap:10px;margin:10px 2px 18px;}
+  .chip{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    font-size:12px;color:var(--muted);padding:4px 12px;
+  }
+  .chip b{color:var(--ink);}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    margin-bottom:14px;overflow:hidden;
+  }
+  details summary{
+    cursor:pointer;list-style:none;padding:14px 18px;display:flex;align-items:center;gap:10px;
+    font-size:16px;font-weight:900;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary .sec{font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;color:#fff;}
+  details summary .en2{font-size:12px;color:var(--muted);font-weight:500;margin-left:auto;text-align:right;}
+  details summary .arr{transition:transform .2s;flex:0 0 auto;}
+  details[open] summary .arr{transform:rotate(90deg);}
+  details .inner{padding:4px 18px 16px;border-top:1px dashed var(--line);}
+  .spec{
+    background:#eef2fa;border-left:4px solid var(--accent);border-radius:8px;
+    padding:10px 14px;margin:12px 0;font-size:13.5px;
+  }
+  .spec .zh{font-weight:700;color:var(--ink);}
+  .spec .en{color:var(--muted);font-size:12.5px;margin-top:2px;}
+  .ptxt{margin:10px 0;}
+  .ptxt li{margin:6px 0 6px 18px;}
+  .formula{
+    background:#fffbe6;border:1px solid #f0d77a;border-radius:8px;
+    font-weight:900;color:#7a5c00;padding:8px 12px;margin:8px 0;display:inline-block;
+  }
+  table{border-collapse:collapse;width:100%;margin:10px 0;table-layout:fixed;font-size:13.5px;}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:#f0f3fa;font-weight:700;}
+  .kbox{
+    background:#fff9ec;border:1px solid #ecd9a8;border-radius:10px;padding:12px 14px;margin:12px 0;
+  }
+  .kbox .kt{font-weight:900;color:#8a6d1a;font-size:13px;}
+  .kbox p,.kbox li{font-size:13.5px;}
+  .errbox{
+    background:#fdf0f0;border:1px solid #ecc;border-radius:10px;padding:12px 14px;margin:12px 0;
+  }
+  .errbox .et{font-weight:900;color:#a33;font-size:13px;}
+  .errbox p,.errbox li{font-size:13.5px;}
+  .sumline{
+    background:var(--ink);color:#dfe7f5;border-radius:12px;padding:16px 18px;margin-top:20px;
+    font-size:14px;line-height:1.8;
+  }
+  .sumline b{color:#fff;}
+  footer{
+    max-width:1120px;margin:0 auto;padding:24px 20px 40px;color:#8a97ad;font-size:12.5px;
+    border-top:1px solid var(--line);
+  }
+  @media(max-width:640px){
+    header .t2{display:none;}
+    nav button{padding:10px 10px;font-size:13px;min-height:44px;}
+    .statrow{grid-template-columns:repeat(2,1fr);}
+    .stat{min-width:0;}
+    .hero h1{font-size:21px;}
+    .modhead{flex-direction:column;align-items:flex-start;gap:6px;}
+    details summary .en2{display:none;}
+  }
+  /* ===== 自查清单 ===== */
+  .clbox{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:22px;overflow:hidden;}
+  .cl-toolbar{padding:16px 18px 12px;border-bottom:1px dashed var(--line);}
+  .cl-toolbar h2{font-size:18px;font-weight:900;}
+  .cl-progress{display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap;}
+  .cl-track{flex:1;min-width:120px;height:10px;background:#e8ebf2;border-radius:5px;overflow:hidden;}
+  .cl-fill{height:100%;width:0%;background:var(--accent);border-radius:5px;transition:width .25s;}
+  .cl-num{font-size:13px;white-space:nowrap;}
+  .cl-num b{font-size:15px;}
+  .cl-num .todo{color:#b3261e;font-weight:700;}
+  .cl-tabs{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+  .cl-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--muted);font-family:inherit;min-height:32px;}
+  .cl-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;}
+  .cl-actions{margin-left:auto;display:flex;gap:6px;}
+  .cl-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer;color:var(--muted);font-family:inherit;min-height:32px;}
+  .cl-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .cl-btn.danger:hover{border-color:#b3261e;color:#b3261e;}
+  .clgroup{border-top:1px solid var(--line);}
+  .clgroup:first-of-type{border-top:none;}
+  .clg-head{display:flex;align-items:center;gap:10px;padding:12px 18px;cursor:pointer;user-select:none;}
+  .clg-head:hover{background:#fafbfe;}
+  .clg-dot{width:10px;height:10px;border-radius:3px;flex:none;}
+  .clg-name{font-weight:900;font-size:14.5px;}
+  .clg-meta{font-size:12px;color:var(--muted);}
+  .clg-count{font-size:12.5px;white-space:nowrap;}
+  .clg-count b{color:var(--ink);}
+  .clg-count.weak b{color:#b3261e;}
+  .clg-caret{color:var(--muted);font-size:11px;transition:transform .2s;margin-left:auto;}
+  .clgroup.collapsed .clg-caret{transform:rotate(-90deg);}
+  .clgroup.collapsed .clitems{display:none;}
+  .clitems{padding:2px 14px 12px;border-top:1px dashed var(--line);}
+  .clitem{display:flex;gap:10px;align-items:flex-start;padding:9px 6px;border-bottom:1px dashed #eeeff3;border-radius:6px;}
+  .clitem:last-child{border-bottom:none;}
+  .clitem:hover{background:#f7f9fc;}
+  .clitem input{flex:none;width:18px;height:18px;margin-top:2px;accent-color:var(--accent);cursor:pointer;}
+  .clitem .flag{flex:none;width:18px;height:18px;margin-top:2px;visibility:hidden;}
+  .clitem.weak .flag{visibility:visible;}
+  .clitem .txt{flex:1;min-width:0;}
+  .clitem .zh{font-size:14px;font-weight:500;}
+  .clitem.weak .zh{color:#b3261e;font-weight:700;}
+  .clitem .en{font-size:12px;color:var(--muted);margin-top:1px;}
+  .clitem.done .zh{color:#9aa1a7;text-decoration:line-through;text-decoration-color:#c9cdd2;}
+  .clitem.done .en{color:#c2c7cc;}
+  .clitem .go{flex:none;border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;color:var(--accent);font-family:inherit;margin-top:1px;}
+  .clitem .go:hover{border-color:var(--accent);background:#eef2fa;}
+  .clitem.weak .go{border-color:#d8b4b4;color:#b3261e;}
+  .clitem.weak .go:hover{background:#fdf0f0;}
+  .cl-hint{font-size:12px;color:var(--muted);padding:10px 18px;border-top:1px dashed var(--line);}
+  .clpanel{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--accent);box-shadow:0 -6px 24px rgba(0,0,0,.08);padding:14px;z-index:60;display:none;max-height:55vh;overflow:auto;}
+  .clpanel.open{display:block;}
+  .clpanel h3{font-size:15px;margin-bottom:8px;}
+  .clpanel textarea{width:100%;height:200px;border:1px solid var(--line);border-radius:6px;padding:10px;font-size:13px;font-family:inherit;resize:vertical;background:#fafbfd;}
+  .clpanel .clclose{float:right;border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 12px;font-size:12px;cursor:pointer;font-family:inherit;}
+  .spec .flagtag{float:right;font-size:11px;font-weight:700;color:#b3261e;background:#fdf0f0;border:1px solid #ecc;border-radius:4px;padding:1px 8px;display:none;}
+  .spec.weak .flagtag{display:inline-block;}
+  @media(max-width:640px){
+    .clitem .en{font-size:11.5px;}
+    .clitem .go{padding:3px 8px;min-height:44px;}
+    .cl-tab,.cl-btn{min-height:44px;}
+  }
+  @media print{
+    header,nav,footer{display:none;}
+    .view{display:block !important;}
+    body{background:#fff;}
+    details .inner{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="none"/><path d="M8 22 L13 10 L16 19 L20 7 L24 22" stroke="#1b2a4a" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="7" r="1.9" fill="#f2b705"/></svg>
+    </div>
+    <div>
+      <div class="t1">ESAT 物理弱项复习讲义</div>
+      <div class="t2">UAT-UK 官方指南 2026 · 按考纲逐条 · 中英对照</div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <button data-v="overview" class="active">总览</button>
+    <button data-v="p1">P1 电学</button>
+    <button data-v="p2">P2 磁学</button>
+    <button data-v="p4">P4 热学</button>
+    <button data-v="p5">P5 物质</button>
+    <button data-v="p6">P6 波</button>
+    <button data-v="p7">P7 放射性</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== 视图：总览 ===== -->
+<section class="view active" id="view-overview">
+  <div class="hero">
+    <h1>ESAT 物理弱项复习讲义</h1>
+    <p>依据 UAT-UK《ESAT Guide – Physics》（2026 年 6 月版，312 页）逐条整理。六个模块覆盖全部 96 条考纲考点，中英对照；未掌握条目在下方自查清单中标红计数，可一键跳转到对应知识点详解。</p>
+    <div class="statrow">
+      <div class="stat"><div class="n">6</div><div class="l">模块</div></div>
+      <div class="stat"><div class="n">28</div><div class="l">小节</div></div>
+      <div class="stat"><div class="n" id="statTodoN">0</div><div class="l">未掌握条</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">考纲逐条对齐</div></div>
+    </div>
+  </div>
+  <!-- ===== 自查清单区 ===== -->
+  <section class="clbox" id="clbox">
+    <div class="cl-toolbar">
+      <h2>考纲自查清单</h2>
+      <div class="cl-progress">
+        <div class="cl-track"><div class="cl-fill" id="clFill"></div></div>
+        <div class="cl-num">已掌握 <b id="clDone">0</b> / <span id="clTotal">0</span> · 未掌握 <b class="todo" id="clTodo">0</b></div>
+      </div>
+      <div class="cl-tabs">
+        <button class="cl-tab active" data-f="all">全部</button>
+        <button class="cl-tab" data-f="todo">只看未掌握</button>
+        <span class="cl-actions">
+          <button class="cl-btn" id="clExport">导出未掌握清单</button>
+          <button class="cl-btn danger" id="clReset">重置进度</button>
+        </span>
+      </div>
+    </div>
+    <div id="clMods"></div>
+    <div class="cl-hint">勾选 = 已掌握；未勾选条目计入「未掌握」并标红 + 旗标，点「讲解」可跳转到对应知识点。</div>
+  </section>
+
+  <div class="modgrid">
+    <div class="modcard" data-go="p1">
+      <div class="bar" style="background:var(--p1)"></div>
+      <div class="body">
+        <div class="m">P1 电学 Electricity</div>
+        <div class="d">静电：摩擦起电 / 电子得失 / 同斥异吸 / 应用危害与接地；电路基础：ac/dc、导体与绝缘体。</div>
+        <span class="tag" style="background:var(--p1)" id="cardTodo-p1">未掌握 0 条</span>
+      </div>
+    </div>
+    <div class="modcard" data-go="p2">
+      <div class="bar" style="background:var(--p2)"></div>
+      <div class="body">
+        <div class="m">P2 磁学 Magnetism</div>
+        <div class="d">软硬磁 / 感应磁化 / 电流磁效应与磁场图形 / 左手定则 / 直流电动机 / 电磁感应 / 交流发电机 / 变压器。</div>
+        <span class="tag" style="background:var(--p2)" id="cardTodo-p2">未掌握 0 条</span>
+      </div>
+    </div>
+    <div class="modcard" data-go="p4">
+      <div class="bar" style="background:var(--p4)"></div>
+      <div class="body">
+        <div class="m">P4 热学 Thermal physics</div>
+        <div class="d">传导 / 对流 / 热辐射（红外电磁波、吸收发射）/ 热容与比热容计算。</div>
+        <span class="tag" style="background:var(--p4)" id="cardTodo-p4">未掌握 0 条</span>
+      </div>
+    </div>
+    <div class="modcard" data-go="p5">
+      <div class="bar" style="background:var(--p5)"></div>
+      <div class="body">
+        <div class="m">P5 物质 Matter</div>
+        <div class="d">三态特征与粒子模型 / 理想气体压强温度与 PV 恒温关系 / 物态变化与潜热 / 密度 / 压强 hρg。</div>
+        <span class="tag" style="background:var(--p5)" id="cardTodo-p5">未掌握 0 条</span>
+      </div>
+    </div>
+    <div class="modcard" data-go="p6">
+      <div class="bar" style="background:var(--p6)"></div>
+      <div class="body">
+        <div class="m">P6 波 Waves</div>
+        <div class="d">波性质 / 反射折射与多普勒 / 光学光路图 / 声波与超声 / 电磁波谱应用与危害。</div>
+        <span class="tag" style="background:var(--p6)" id="cardTodo-p6">未掌握 0 条</span>
+      </div>
+    </div>
+    <div class="modcard" data-go="p7">
+      <div class="bar" style="background:var(--p7)"></div>
+      <div class="body">
+        <div class="m">P7 放射性 Radioactivity</div>
+        <div class="d">原子结构与核素符号 / 衰变与 αβγ 本质 / 穿透与电离 / 应用危害 / 半衰期读图与计算。</div>
+        <span class="tag" style="background:var(--p7)" id="cardTodo-p7">未掌握 0 条</span>
+      </div>
+    </div>
+  </div>
+  <div class="clpanel" id="clPanel">
+    <h3>未掌握知识点（可直接复制，作为复习清单）</h3>
+    <button class="clclose">关闭</button>
+    <textarea id="clExportBox" readonly></textarea>
+  </div>
+
+  <div class="sumline">
+    <b>使用建议：</b>按模块逐个过，先看小节标题右侧的英文原文确认考点，再对照中文要点自查；每小节末尾的<span style="color:#f2b705">警示/易错</span>和<span style="color:#f2b705">计算例题</span>优先重做一遍。考前把六张模块卡片的色条当进度条：过完一块就把对应卡片划掉。
+  </div>
+</section>
+
+<!-- ===== 视图：P1 电学 ===== -->
+<section class="view" id="view-p1">
+  <div class="modhead" style="background:var(--p1)">
+    <div class="code">P1</div>
+    <div>
+      <div class="name">电学 Electricity</div>
+      <div class="en">静电 P1.1 · 电路概念 P1.2</div>
+    </div>
+  </div>
+  <div class="modmeta">
+    <span class="chip">覆盖清单 <b>①②③④</b></span>
+    <span class="chip">页码 <b>p5–31</b></span>
+    <span class="chip">章节 <b>2</b></span>
+  </div>
+
+  <details open>
+    <summary><span class="sec" style="background:var(--p1)">P1.1</span> 静电 Electrostatics<span class="en2">a–d 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-0"><div class="zh">a. 知道并理解绝缘体可通过摩擦起电</div><div class="en">Know and understand that insulators can be charged by friction.</div></div>
+      <ul class="ptxt">
+        <li>两个绝缘体相对移动，摩擦可使<b>两者都</b>带电。例子：塑料擦尘布、梳子梳头、燃料流经管道、飞机穿过空气（后两个是「危害」题伏笔）。</li>
+        <li>导体也能带电，但<b>只有与周围绝缘才能留住电荷</b>；不绝缘则电荷漏走。</li>
+      </ul>
+      <div class="spec" id="spec-1"><div class="zh">b. 知道并理解带电由电子得失造成</div><div class="en">Know and understand that charging is caused by gain or loss of electrons.</div></div>
+      <ul class="ptxt">
+        <li>原子＝质子＋中子（紧密束缚于核内）＋电子（核外壳层）。中性原子质子数＝电子数。</li>
+        <li>失去电子 → 正电；得到电子 → 负电。摩擦把电子从一物转移到另一物。</li>
+      </ul>
+      <div class="errbox"><div class="et">易错（考纲原文强调）</div><ul>
+        <li><b>永远只有电子在物体间移动</b>。正电是电子走掉留下的（质子深锁核内动不了）。</li>
+        <li>电荷守恒：一物变正，另一物必然等量变负，总电荷不变。</li>
+        <li>电子移动方向由「哪种材料对电子吸引力更强」决定：电子离开吸引弱的、跑向吸引强的。同种材料摩擦带电符号取决于配对材料。</li>
+      </ul></div>
+      <div class="kbox"><div class="kt">补充：感应起电（charging by induction）</div><p>中性物体靠近带电体 → 内部电子重新分布（近端感应出异号电荷）；若此时瞬间接地让一端电荷漏走，物体便永久带电。这就是不带电纸屑被带电塑料吸引的原因。</p></div>
+      <div class="spec" id="spec-2"><div class="zh">c. 知道并理解同斥异吸</div><div class="en">Know and understand that like charges repel and unlike charges attract.</div></div>
+      <ul class="ptxt">
+        <li>同号（+/+ 或 −/−）相斥，异号（+/−）相吸。</li>
+        <li>力随电荷量增大而增大、随距离增大而减小。静电应用题的万能钥匙。</li>
+        <li>例子：梳过的头发「粘」在梳子上；两导体摩擦带电理论可行，但接触状态下电子会瞬间回流，实际留不住。</li>
+      </ul>
+      <div class="spec" id="spec-3"><div class="zh">d. 理解静电的应用与危害，含接地作用</div><div class="en">Understand applications and hazards associated with electrostatics, including the role of earthing.</div></div>
+      <ul class="ptxt">
+        <li><b>应用</b>：复印/激光打印（吸附墨粉→加热定影）、静电空气净化、静电喷漆。</li>
+        <li><b>危害</b>：头发粘梳子、雷暴、走尼龙地毯后的小电击；火花＝空气被高电压电离后放电，可引燃引爆（飞机加油必须接地）。</li>
+        <li><b>接地（earthing）</b>：导线把电荷引入大地，电荷不断流走、无法积累，消除静电与火花风险。</li>
+      </ul>
+      <div class="errbox"><div class="et">指南原题：静电喷漆四判断（必背结论）</div><ul>
+        <li>液滴带同种正电荷 → 互相排斥、涂层均匀 → 「液滴互相吸引」是<b>错的</b>。</li>
+        <li>液滴靠近车身 → 感应出负电荷 → 被吸引 → <b>对</b>。</li>
+        <li>绕过车身背面的液滴能被感应吸引拉回来 → <b>对</b>。</li>
+        <li>车身接地 → 电子从地面流入中和正电荷、车身保持中性 → 「车身逐渐变正」是<b>错的</b>。</li>
+      </ul></div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p1)">P1.2</span> 电路概念（ac/dc · 导体绝缘体）<span class="en2">两条已标记</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-4"><div class="zh">ac vs dc：电流方向与波形判据</div><div class="en">Difference between ac and dc.</div></div>
+      <ul class="ptxt">
+        <li>dc：电流永远同一方向，来源＝电池/电池组。</li>
+        <li>ac：电流反复换向，来源＝电厂发电机。只要换向就是 ac，波形形状任意（正弦、方波都算）。</li>
+        <li><b>波形判据（原题）</b>：ac 波形必须有一部分在横轴上方、一部分在下方；上方＝一个方向，下方＝相反方向。</li>
+        <li>50 Hz 精确含义：电流每秒换向 <b>100 次</b>（50 个完整往返周期）。记「50 周期 = 100 次换向」。</li>
+        <li>延伸：二极管只允许箭头方向电流通过，可把 ac 整流成 dc。</li>
+      </ul>
+      <div class="spec" id="spec-5"><div class="zh">导体与绝缘体（含例子）</div><div class="en">Difference between conductors and insulators, with examples.</div></div>
+      <ul class="ptxt">
+        <li><b>好导体</b>：所有金属（尤其铜金银）、碳（石墨形态）、离子溶液。</li>
+        <li><b>好绝缘体</b>：大多数非金属，尤其塑料、橡胶、干木、空气、真空。</li>
+        <li><b>关键补充（考纲原文）</b>：水除非极纯否则导电 → 湿/潮材料都不是好绝缘体。浴室用尼龙拉绳（尼龙绝缘且不吸水）。</li>
+        <li>本质：几乎所有材料都多少导电，差别在电阻大小；金属导电靠自由电子移动携带电荷。</li>
+        <li>电缆结构：铜芯（导体）＋塑料皮（绝缘体）。</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 视图：P2 磁学 ===== -->
+<section class="view" id="view-p2">
+  <div class="modhead" style="background:var(--p2)">
+    <div class="code">P2</div>
+    <div>
+      <div class="name">磁学 Magnetism</div>
+      <div class="en">P2.1–P2.5 共 5 节 · 全书重点模块之一</div>
+    </div>
+  </div>
+  <div class="modmeta">
+    <span class="chip">覆盖清单 <b>⑤–⑳</b></span>
+    <span class="chip">页码 <b>p32–81</b></span>
+    <span class="chip">章节 <b>5</b></span>
+  </div>
+
+  <details open>
+    <summary><span class="sec" style="background:var(--p2)">P2.1</span> 磁性材料与感应磁化<span class="en2">⑤⑥ 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-6"><div class="zh">软磁与硬磁材料（如铁与钢）</div><div class="en">Difference between soft and hard magnetic materials (e.g. iron and steel).</div></div>
+      <ul class="ptxt">
+        <li>铁＝软磁：易磁化也易退磁（断电即失磁）→ 做<b>电磁铁铁芯</b>。</li>
+        <li>钢＝硬磁：难磁化但磁化后磁性保持 → 做<b>永磁体</b>。</li>
+        <li>记忆：软＝临时工，硬＝永久牌。</li>
+      </ul>
+      <div class="spec" id="spec-7"><div class="zh">定性理解感应磁化</div><div class="en">Qualitatively understand induced magnetism.</div></div>
+      <ul class="ptxt">
+        <li>中性铁靠近磁铁会被磁化：近端感应出<b>异名</b>磁极、远端<b>同名</b>磁极（铁钉吸回形针即此原理）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p2)">P2.2</span> 电流的磁场与电磁铁<span class="en2">⑦⑧⑨⑩ 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-8"><div class="zh">电流的磁效应</div><div class="en">Magnetic effect of a current.</div></div>
+      <ul class="ptxt"><li>通电导线周围产生磁场（奥斯特实验：电流使磁针偏转）。</li></ul>
+      <div class="spec" id="spec-9"><div class="zh">会画直导线、线圈/螺线管周围磁场图形（含方向）</div><div class="en">Magnetic field patterns around straight wires and coils/solenoids, including direction.</div></div>
+      <ul class="ptxt">
+        <li><b>直导线</b>：磁场是同心圆；方向用右手螺旋定则（拇指指电流方向，四指绕向即磁场方向）。</li>
+        <li><b>线圈/螺线管</b>：外部像条形磁铁，内部均匀强磁场；右手握螺线管，四指绕电流方向，拇指指 N 极。</li>
+      </ul>
+      <div class="spec" id="spec-10"><div class="zh">影响导线周围磁场强度的因素</div><div class="en">Factors affecting magnetic field strength around a wire.</div></div>
+      <ul class="ptxt"><li>电流越大、离导线越近、匝数越多（再加铁芯）→ 磁场越强。</li></ul>
+      <div class="spec" id="spec-11"><div class="zh">永磁体与电磁铁的区别</div><div class="en">Difference between permanent magnets and electromagnets.</div></div>
+      <ul class="ptxt">
+        <li>电磁铁：通电才有磁性、磁性可调（电流/匝数）、可换极性（电流反向）；永磁体都不行。</li>
+        <li>核心优势：电磁铁能<b>开关</b>。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p2)">P2.3</span> 载流导线受力 · 电动机<span class="en2">⑪⑫⑬⑭ 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-12"><div class="zh">影响受力方向的因素（含左手定则）</div><div class="en">Factors affecting direction of force, including the left-hand rule.</div></div>
+      <ul class="ptxt">
+        <li>左手定则（Fleming）：<b>First</b> finger＝Field（磁场 N→S）、<b>seCond</b> finger＝Conventional current（+→−）、<b>thuMb</b>＝Motion（力）。</li>
+        <li>只反转电流或只反转磁场 → 力反向；两者都反转 → 力不变。</li>
+      </ul>
+      <div class="spec" id="spec-13"><div class="zh">影响受力大小的因素</div><div class="en">Factors affecting magnitude of the force on a wire.</div></div>
+      <ul class="ptxt">
+        <li>电流越大、磁场越强、磁场中的导线长度越长 → 力越大；导线垂直磁场时力最大（90°），平行时为零。</li>
+        <li>F=BIL 仅对垂直于均匀磁场的直导线成立；B 单位特斯拉 T（1 T = 1 N m⁻¹ A⁻¹）。</li>
+      </ul>
+      <div class="spec" id="spec-14"><div class="zh">直流电动机的构造与工作原理</div><div class="en">Construction and operation of a dc motor.</div></div>
+      <ul class="ptxt">
+        <li>矩形线圈两侧电流反向 → 反向力偶 → 转动。</li>
+        <li><b>换向器（split-ring commutator）</b>每半圈反转线圈电流，保证持续同向旋转；电刷用石墨做滑动接触。</li>
+        <li>影响转动力矩：电流（升电压）、线圈面积、磁场强度、匝数、绕在软铁芯上；线圈处于磁场平面内时力矩最大（垂直时为零）。</li>
+      </ul>
+      <div class="spec" id="spec-15"><div class="zh">电磁铁的应用</div><div class="en">Applications of electromagnets.</div></div>
+      <ul class="ptxt"><li>电铃、电磁起重机、继电器、扬声器（音圈在径向磁场中振动发声）。</li></ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p2)">P2.4</span> 电磁感应与交流发电机<span class="en2">⑮–⑳ 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-16"><div class="zh">感应电压的条件</div><div class="en">A voltage is induced when a wire cuts field lines, or when a magnetic field changes.</div></div>
+      <ul class="ptxt">
+        <li>导线切割磁力线 或 穿过线圈的磁场发生变化——指南明确这是同一现象的两个等价描述。</li>
+        <li>必须有相对运动（线圈动或磁铁动都行）；磁场不变 → 无感应电压；要持续电压就必须持续变化。</li>
+      </ul>
+      <div class="spec" id="spec-17"><div class="zh">影响感应电压大小的因素</div><div class="en">Factors affecting magnitude of an induced voltage.</div></div>
+      <ul class="ptxt"><li>与切割/磁场变化<b>速率</b>成正比（记「速率」不是「总量」）。增大三招：动得更快、磁铁更强、匝数更多。</li></ul>
+      <div class="spec" id="spec-18"><div class="zh">影响感应电压方向的因素（楞次定律）</div><div class="en">Factors affecting direction of an induced voltage.</div></div>
+      <ul class="ptxt">
+        <li>感应电流方向总是<b>抵抗</b>引起它的变化：N 极接近线圈 → 线圈近端感应出 N 极排斥；拉走则反向。</li>
+        <li>指南的能量守恒论证：若方向相反，磁铁会被吸过去、电路白白发电，不守恒 → 不可能。</li>
+        <li>方向反转条件：切割方向反转、磁场由增变减/由减变增。</li>
+      </ul>
+      <div class="spec" id="spec-19"><div class="zh">交流发电机的工作原理</div><div class="en">Operation of an ac generator.</div></div>
+      <ul class="ptxt"><li>线圈旋转 → 磁场连续变化 → 正弦交流电（每半圈反向一次）。增大输出电压：转速更快、磁场更强、线圈面积更大、匝数更多；输出频率＝线圈转速。</li></ul>
+      <div class="spec" id="spec-20"><div class="zh">解读交流发电机输出电压图像</div><div class="en">Interpret the graphical representation of ac generator output voltage.</div></div>
+      <ul class="ptxt">
+        <li>峰值电压出现在导线<b>水平运动</b>（切割速率最大）时；零电压出现在导线垂直运动（平行于磁场、不切割）时。</li>
+        <li>易错：转速减半 → 峰值电压<b>减半</b>（不是加倍）、频率减半。</li>
+      </ul>
+      <div class="spec" id="spec-21"><div class="zh">电磁感应的应用</div><div class="en">Applications of electromagnetic induction.</div></div>
+      <ul class="ptxt"><li>发电机、变压器、汽车交流发电机（充电）、电磁手电筒、电磁炉。核电站里发电机是动能→电能。</li></ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p2)">P2.5</span> 变压器与高压输电<span class="en2">全覆盖（清单外补齐）</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-22"><div class="zh">升压/降压与交流要求</div><div class="en">Step-up and step-down transformers; ac only.</div></div>
+      <ul class="ptxt">
+        <li>升压＝副线圈电压更高；降压反之。<b>只工作于交流</b>：原线圈电流须连续变化 → 铁芯磁场连续变化 → 副线圈才有感应电压；接直流则磁场恒定、无感应电压。</li>
+        <li>软铁芯作用：磁化/退磁快，并把两线圈磁力线连起来。</li>
+      </ul>
+      <div class="spec" id="spec-23"><div class="zh">电压比＝匝数比</div><div class="en">Vp/Vs = np/ns (ideal transformer).</div></div>
+      <ul class="ptxt"><li>仅对理想（100% 效率）变压器严格成立；实际接近 100% 仍可用。</li></ul>
+      <div class="spec" id="spec-24"><div class="zh">功率守恒与损耗</div><div class="en">VpIp = VsIs; losses.</div></div>
+      <ul class="ptxt">
+        <li>100% 效率 → 功率完全传递（P_in = P_out）；电压升多少倍、电流就降多少倍。</li>
+        <li>实际损耗三来源：线圈电阻发热、铁芯磁化发热、涡流。</li>
+      </ul>
+      <div class="spec" id="spec-25"><div class="zh">高压输电</div><div class="en">High-voltage transmission; I²R loss.</div></div>
+      <ul class="ptxt">
+        <li>线路损耗＝I²R，用高压把电流降下来减少发热损耗。</li>
+        <li>区分两个电压：<b>线间电压</b>（P=IV 里那个，变压器升降的就是它）与<b>沿线电压降</b> V_drop = IR（导线自身电阻造成，不是变压器升降的）。</li>
+        <li>典型值（指南原文）：发电 11/33 kV → 输电 275/400 kV → 铁路 25 kV / 家用 230 V。</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 视图：P4 热学 ===== -->
+<section class="view" id="view-p4">
+  <div class="modhead" style="background:var(--p4)">
+    <div class="code">P4</div>
+    <div>
+      <div class="name">热学 Thermal physics</div>
+      <div class="en">P4.1–P4.4 共 4 节 · 最短模块（21 页）</div>
+    </div>
+  </div>
+  <div class="modmeta">
+    <span class="chip">覆盖清单 <b>㉑–㉖</b></span>
+    <span class="chip">页码 <b>p147–167</b></span>
+    <span class="chip">章节 <b>4</b></span>
+  </div>
+
+  <details open>
+    <summary><span class="sec" style="background:var(--p4)">P4.1</span> 传导 Conduction<span class="en2">a b 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-26"><div class="zh">a. 热导体与热绝缘体（含例子）</div><div class="en">Know and understand thermal conductors and insulators, with examples.</div></div>
+      <ul class="ptxt">
+        <li><b>热能（thermal energy）</b>：物质因其微观粒子运动而具有的能量。固体粒子振动，流体（液、气）粒子四处移动；温度越高粒子平均运动越快。热能与温度不是一回事，但热能增加通常伴随温度升高。</li>
+        <li><b>传导</b>：靠粒子间动能传递热量，主要发生在固体和液体中（粒子靠得近）；不同状态物质接触时也能传导。</li>
+        <li><b>良导体</b>＝传热快的材料：<b>金属</b>，铜、银、金尤其好。原因（必考）：金属中有<b>自由电子</b>，加热时自由电子快速穿过离子晶格碰撞传递能量，比离子之间慢速的「邻居接力」快得多。</li>
+        <li><b>绝缘体</b>＝传热慢：塑料、木头、气体（如空气）、泡沫/玻璃纤维等含大量被困空气（trapped air）的材料。</li>
+        <li>三态导热排序（原题）：<b>固体 &gt; 液体 &gt; 气体</b>。排序题答案：水蒸气 &lt; 液态水 &lt; 冰 &lt; 固态铝。液态银比固态橡胶好：银有自由电子，橡胶没有。</li>
+        <li><b>真空不能传导</b>（没有粒子）。</li>
+        <li>应用：锅/煎锅接触食物部分用良导体，手柄用绝缘体；毛毯、墙体保温、<b>双层玻璃</b>（两层玻璃夹空气层，靠空气的绝缘性）。</li>
+      </ul>
+      <div class="spec" id="spec-27"><div class="zh">b. 影响传导速率的因素（能应用）</div><div class="en">Know and be able to apply factors affecting rate of conduction.</div></div>
+      <table>
+        <colgroup><col style="width:52%"><col style="width:48%"></colgroup>
+        <tr><th>因素</th><th>速率更高当…</th></tr>
+        <tr><td>两物体温度差 (T₁−T₂)</td><td>温差更大</td></tr>
+        <tr><td>中间材料性质</td><td>更好的导热体</td></tr>
+        <tr><td>两物体间距离</td><td>距离更短</td></tr>
+        <tr><td>接触面积</td><td>面积更大</td></tr>
+      </table>
+      <div class="errbox"><div class="et">指南原题：双层玻璃三组改动</div><ul>
+        <li>加厚玻璃 + 减小窗户面积 → <b>不能</b>保持速率不变（两个改动都使速率下降）。</li>
+        <li>中间换更优绝缘气体 + 增大窗户面积 → <b>可以</b>（一降一升，可能抵消）。</li>
+        <li>减薄玻璃 + 中间换真空 → <b>不能</b>，传导在真空中为 0，速率必降为零。</li>
+      </ul></div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p4)">P4.2</span> 对流 Convection<span class="en2">a b 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-28"><div class="zh">a. 温度对流体密度的影响</div><div class="en">Understand and be able to apply the effect of temperature on density of fluid.</div></div>
+      <ul class="ptxt">
+        <li>流体温度升高 → 粒子平均速度↑ → 平均间距↑ → <b>膨胀</b>（是间距增大，不是粒子变大）→ <b>密度↓</b>（单位体积内粒子更少、质量更少）。</li>
+        <li>经典例子：<b>热气球</b>——内部空气加热、密度小于周围空气，整体密度更低，向上浮；关火冷却后下降。</li>
+      </ul>
+      <div class="spec" id="spec-29"><div class="zh">b. 密度差引起的流体流动（对流）</div><div class="en">Understand and be able to apply fluid flow caused by differences in density.</div></div>
+      <ul class="ptxt">
+        <li>对流口诀：「热流体上升，冷流体补位」。加热流体某区域 → 变稀上升 → 周围冷流体流来补位 → 热流体上升途中冷却变密下沉 → 持续加热形成<b>对流环流</b>。</li>
+        <li>只在流体（液/气）中发生；固体粒子固定不能换位，<b>固体中不可能对流</b>（原题考点）。</li>
+        <li>热源加热容器顶部时不形成对流（热流体留在顶部）。</li>
+        <li>对流比传导<b>快得多</b>，两者可同时发生。</li>
+        <li>传导 vs 对流：都需要粒子、都能在流体中发生；传导能在固体中发生，对流不能；传导＝粒子微观运动逐个传动能，对流＝大量粒子宏观整体运动携带动能。</li>
+        <li>应用：暖气放<b>地板附近</b>、空调装<b>高处</b>、冰箱冷冻室放<b>顶部</b>（冷空气下沉循环）；空腔墙体填泡沫削弱对流；海陆风（白天陆地更热 → 陆地上空气上升 → 海风从海面吹向陆地，高空反向回流）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p4)">P4.3</span> 热辐射 Thermal radiation<span class="en2">a b c 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-30"><div class="zh">a. 热辐射是红外区域的电磁波</div><div class="en">Understand thermal radiation as electromagnetic waves in the infrared region.</div></div>
+      <ul class="ptxt">
+        <li>热辐射＝红外（IR）辐射＝电磁波谱一部分：以<b>光速</b>传播、<b>不需要介质</b>、能穿真空——这是太阳热量到达地球的方式。</li>
+        <li>直接物体间传递，<b>不加热中间介质</b>（辐射取暖器加热附近物体而不加热中间空气）。</li>
+        <li>红外不可见，但皮肤能感知其温暖。</li>
+      </ul>
+      <div class="errbox"><div class="et">原题判断</div><p>关于热辐射的陈述，<b>只有「能穿过真空」正确</b>；它不是电离辐射（不是由不稳定核衰变发射的），也不比光慢。</p></div>
+      <div class="spec" id="spec-31"><div class="zh">b. 辐射的吸收与发射</div><div class="en">Know and be able to apply absorption and emission of radiation.</div></div>
+      <ul class="ptxt">
+        <li><b>发射</b>：任何温度高于<b>绝对零度</b>的物体都在发射；温度越高，发射速率（能量/秒＝功率）越高。发射时物体热能→辐射能；无其他能量转移则温度降。</li>
+        <li><b>吸收</b>：热辐射打到物体上，可被<b>吸收</b>、<b>反射</b>或<b>透射</b>。吸收时辐射能→物体热能；无其他能量转移则温度升。</li>
+        <li><b>组合效应（必考）</b>：物体比周围热 → 发射&gt;吸收 → 净失能温度降；比周围冷 → 吸收&gt;发射 → 净得能温度升。</li>
+        <li>空气对热辐射吸收很弱 → 太阳辐射能穿过大气到达地面。</li>
+      </ul>
+      <div class="kbox"><div class="kt">计算例题（原题）</div><p>1000 W 辐射照到窗户：反射 100 W、透射 750 W、发射 200 W → 吸收 = 1000−100−750 = 150 W；净变化 = 150−200 = <b>−50 W</b>（净失能 50 W）。</p></div>
+      <div class="spec" id="spec-32"><div class="zh">c. 影响吸收/发射速率的因素</div><div class="en">Know and be able to apply factors affecting rate of absorption and emission of thermal radiation.</div></div>
+      <table>
+        <colgroup><col style="width:28%"><col style="width:36%"><col style="width:36%"></colgroup>
+        <tr><th>因素</th><th>吸收与发射速率低</th><th>吸收与发射速率高</th></tr>
+        <tr><td>表面纹理</td><td>光亮 shiny</td><td>哑光/粗糙 matt</td></tr>
+        <tr><td>表面积</td><td>小</td><td>大</td></tr>
+      </table>
+      <ul class="ptxt">
+        <li>温度越高，<b>发射</b>速率越高。</li>
+        <li>关键规律：<b>好的吸收体 = 好的发射体</b>；差的吸收体 = 差的发射体（＝好的反射体）。</li>
+        <li>应用：<b>救生毯</b>（光亮——吸收发射差、反射好，把人体热辐射反射回去）；<b>太阳能热水器</b>（水管涂哑黑，哑光表面是相对好的吸收体；因太阳辐射速率高，吸收&gt;发射）；温室效应/全球变暖（地球表面吸热升温后发射红外，温室气体如 CO₂ 吸收并重新发射一部分红外 → 热量进入地球比离开快）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p4)">P4.4</span> 热容 Heat capacity<span class="en2">a b 全覆盖（清单外补齐）</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-33"><div class="zh">a. 能量转移对物体温度的影响</div><div class="en">Understand the effect of energy transferred to or from an object on its temperature.</div></div>
+      <ul class="ptxt">
+        <li>热量可通过传导/对流/辐射（可同时）转移；温度由<b>净热转移</b>（转入−转出）决定。</li>
+        <li>净转入（且不变态）→ 温度升、粒子运动更剧烈；净转出 → 温度降。</li>
+        <li>温度变化量取决于：<b>质量</b>、<b>材料类型</b>。</li>
+        <li><b>热容（heat capacity）</b>＝物体温度每变化 1°C 所需转移的热能；单位 <b>J °C⁻¹</b>；是特定物体/样品的属性。</li>
+      </ul>
+      <div class="spec" id="spec-34"><div class="zh">b. 比热容（含计算）</div><div class="en">specific heat capacity = thermal energy / (mass × temperature change)</div></div>
+      <div class="formula">c = E / (m × ΔT) &nbsp;·&nbsp; c 单位 J kg⁻¹ °C⁻¹ &nbsp;·&nbsp; 温度用 °C</div>
+      <ul class="ptxt">
+        <li><b>比热容</b>＝每单位质量的物质升高 1°C 所需能量（specific＝per unit mass）；是<b>物质种类</b>的属性。热容属于具体样品，比热容属于物质类型。</li>
+        <li>常用数值（2 s.f.，供比较）：铅 130、铜 390、铝 900、水(固) 2100、乙醇 2400、水(液) 4200、氢(气) 14000。</li>
+      </ul>
+      <div class="kbox"><div class="kt">计算例题（原题）</div><ul>
+        <li>3.0 kg 样品温度升 15°C，吸收 45 000 J → c = 45000/(3×15) = <b>1000 J kg⁻¹ °C⁻¹</b></li>
+        <li>2.0 kg 铝块从 25.0°C 降到 20.0°C（c=900）→ E = 900 × 2.0 × 5.0 = <b>9000 J</b></li>
+      </ul></div>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 视图：P5 物质 ===== -->
+<section class="view" id="view-p5">
+  <div class="modhead" style="background:var(--p5)">
+    <div class="code">P5</div>
+    <div>
+      <div class="name">物质 Matter</div>
+      <div class="en">P5.1–P5.5 共 5 节</div>
+    </div>
+  </div>
+  <div class="modmeta">
+    <span class="chip">覆盖清单 <b>㉗–㉛</b></span>
+    <span class="chip">页码 <b>p168–196</b></span>
+    <span class="chip">章节 <b>5</b></span>
+  </div>
+
+  <details open>
+    <summary><span class="sec" style="background:var(--p5)">P5.1</span> 物质三态 States of matter<span class="en2">a b c 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-35"><div class="zh">a. 固液气的特征性质</div><div class="en">Know the characteristic properties of solids, liquids and gases.</div></div>
+      <table>
+        <colgroup><col style="width:22%"><col style="width:26%"><col style="width:26%"><col style="width:26%"></colgroup>
+        <tr><th>性质</th><th>固体</th><th>液体</th><th>气体</th></tr>
+        <tr><td>流动性</td><td>刚性 rigid</td><td>流体，取容器底部形状</td><td>流体，充满整个容器</td></tr>
+        <tr><td>可压缩性</td><td>几乎不可压缩</td><td>几乎不可压缩</td><td>高（体积可显著变化）</td></tr>
+        <tr><td>典型密度</td><td>高（约 10³–10⁴ kg m⁻³）</td><td>高（约 10³ kg m⁻³）</td><td>低（常温常压约 1 kg m⁻³）</td></tr>
+      </table>
+      <ul class="ptxt">
+        <li><b>海绵</b>不矛盾：固体骨架＋空气气囊，挤压只是挤出空气，骨架体积几乎不变。</li>
+        <li>液体和气体统称<b>流体（fluids）</b>，两者都能流动。</li>
+        <li>判断物态题：19 000 kg m⁻³（1.9×10⁴）在 10³–10⁴ 区间甚至更高 → <b>固体</b>。</li>
+      </ul>
+      <div class="spec" id="spec-36"><div class="zh">b. 粒子模型（可应用）</div><div class="en">Know and be able to apply particle models of solids, liquids and gases.</div></div>
+      <ul class="ptxt">
+        <li>粒子模型：一切物质由<b>持续运动的微观粒子</b>组成；三态差异来自粒子的间距、排列、运动方式；粒子间空隙是空的。</li>
+        <li><b>固体</b>：相邻粒子强吸引（键合）；靠得近、固定晶格排列；在固定位置振动、不换位。</li>
+        <li><b>液体</b>：有吸引但弱于固体；靠得近、无规则排列；粒子随机移动。</li>
+        <li><b>气体</b>：碰撞外无作用力；平均相距很远、无规则；高速随机运动，碰撞间走直线。</li>
+        <li>「粒子」指物质最小单元（原子/分子/离子），模型不区分类型。</li>
+        <li>微观特征判断（原题）：粒子靠得很近且随机移动 → <b>液体</b>；粒子振动 → <b>固体</b>；大部分时间无作用力 → <b>气体</b>。</li>
+      </ul>
+      <div class="spec" id="spec-37"><div class="zh">c. 用粒子运动、作用力与间距解释性质</div><div class="en">Know and be able to explain properties in terms of particle motion and the forces and distances between the particles.</div></div>
+      <ul class="ptxt">
+        <li>固体固定形状：粒子被强吸引力固定在固定排列中；不可压缩：粒子靠得很近。</li>
+        <li>液体取容器底部形状：粒子无固定排列但吸引力足以聚在一起；能流动：粒子能彼此滑过；不可压缩：粒子靠得近。</li>
+        <li>气体充满容器：粒子无吸引、随机运动；可压缩：粒子间距大可推近；密度低：粒子间距大 → 单位体积粒子数少。</li>
+      </ul>
+      <div class="errbox"><div class="et">宏微观别混淆（考纲原文）</div><ul>
+        <li>物质可压缩 ≠ 粒子可压缩，只是粒子被推得更近。</li>
+        <li>水蒸气密度低 ≠ 水粒子在液态「更密」，只是液态粒子更挤（单位体积更多）。</li>
+      </ul></div>
+      <div class="kbox"><div class="kt">用粒子模型解释三个现象（原题）</div><ul>
+        <li>固体中<b>不能发生对流</b>：粒子固定排列、不能换位。</li>
+        <li>水滴里的食用色素逐渐扩散：液体粒子随机运动碰撞推动色素分子。</li>
+        <li>气体对接触物体施力：粒子随机运动碰撞物体，每次碰撞施加小力。</li>
+      </ul></div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p5)">P5.2</span> 理想气体 Ideal gases<span class="en2">a b 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-38"><div class="zh">a. 用粒子行为解释压强与温度</div><div class="en">Be able to explain pressure and temperature in terms of the behaviour of particles.</div></div>
+      <ul class="ptxt">
+        <li><b>理想气体</b>模型：相同粒子、随机运动、碰撞外无作用力、粒子体积可忽略、遵守牛顿定律；常温常压下多数气体近似理想气体。</li>
+        <li><b>温度</b>：宏观量，测量「热程度」；温度越高 → 粒子<b>平均速率</b>越高。</li>
+        <li><b>压强</b>：宏观量，气体粒子碰撞器壁产生——每次碰撞施加微小力，无数碰撞累积成单位面积上的平均力＝压强。</li>
+        <li>温度/压强都是宏观属性，<b>不能</b>用来描述单个粒子（不能说单个粒子「很热」或「有压强」）。</li>
+      </ul>
+      <div class="errbox"><div class="et">必考题：密封容器气体温度升高</div><p>压强增大，两个原因：①粒子平均速率↑ → 碰撞更<b>频繁</b>；②碰撞更<b>有力</b>（平均每次作用力更大）→ 单位面积平均力↑。</p></div>
+      <div class="spec" id="spec-39"><div class="zh">b. 恒温下 PV = 常数（玻意耳定律）</div><div class="en">Understand and be able to apply the effect of pressure (P) on gas volume (V) at constant temperature, i.e. PV = constant.</div></div>
+      <div class="formula">P₁V₁ = P₂V₂ &nbsp;·&nbsp; P ∝ 1/V</div>
+      <ul class="ptxt">
+        <li>恒温压缩气体：粒子平均速率不变，但碰撞间距缩短 → 碰撞频率↑、每次碰撞力不变 → 压强↑。</li>
+        <li>恒温下：体积减小 → 压强增大；体积增大 → 压强减小。P–V 图像是反比例曲线。</li>
+        <li>常数取决于粒子数和温度；条件：恒温、密封不漏气。</li>
+        <li>实际操作中压缩会使气体升温，回到热平衡（原温度）后 P–V 才满足该关系。</li>
+      </ul>
+      <div class="kbox"><div class="kt">计算（原题）</div><p>1.0×10⁵ Pa、60 cm³ 压到 40 cm³ → P = 1.0×10⁵ × 60 / 40 = <b>1.5×10⁵ Pa</b></p></div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p5)">P5.3</span> 物态变化 State changes<span class="en2">a b c 全覆盖（清单外补齐）</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-40"><div class="zh">a. 熔点与沸点</div><div class="en">Understand the terms melting point and boiling point.</div></div>
+      <ul class="ptxt">
+        <li>几乎每种纯物质都有熔点和沸点（例外：CO₂ 等升华，固↔气）。</li>
+        <li><b>熔点</b>：固↔液转变的温度；高于熔点固体熔化，低于熔点液体凝固。</li>
+        <li><b>沸点</b>：液↔气在整个样品内转变的温度；高于沸点沸腾，低于沸点凝结。</li>
+        <li>温度-状态：低于熔点=固；在熔点=固/液；熔点~沸点间=液；在沸点=液/气；高于沸点=气。</li>
+        <li><b>不纯物质</b>在温度区间内熔化/沸腾，没有固定熔点/沸点。</li>
+      </ul>
+      <div class="kbox"><div class="kt">判断物态（原题）</div><ul>
+        <li>溴（熔点 −7°C、沸点 59°C）在 24°C → <b>液体</b></li>
+        <li>氟（−220 / −188）→ <b>气体</b></li>
+        <li>碘（114 / 184）→ <b>固体</b></li>
+      </ul></div>
+      <div class="spec" id="spec-41"><div class="zh">b. 熔化潜热与汽化潜热</div><div class="en">Know and understand the terms latent heat of fusion and latent heat of vaporisation.</div></div>
+      <ul class="ptxt">
+        <li>状态变化时<b>温度不变</b>但吸收/释放热能：固→液、液→气吸收热能（增大粒子间距）；气→液、液→固释放热能（吸引力增强、间距减小）。</li>
+        <li>熔化/凝固时固液都保持在熔点；沸腾/凝结时液气都保持在沸点。</li>
+        <li><b>潜热（latent heat）</b>＝状态变化期间转移的热能；<b>熔化潜热</b>对应熔化/凝固，<b>汽化潜热</b>对应沸腾/凝结。</li>
+        <li>加热曲线：不变态时温度上升，变态时出现<b>平台</b>；冷却曲线相反。不纯物质变态时温度不恒定。</li>
+      </ul>
+      <div class="kbox"><div class="kt">判断（原题）</div><ul>
+        <li>冰熔化 → 吸收<b>熔化潜热</b>（固→液）</li>
+        <li>气态丙烷变液态丙烷 → 释放<b>汽化潜热</b>（气→液凝结）</li>
+      </ul></div>
+      <div class="spec" id="spec-42"><div class="zh">c. 比潜热计算</div><div class="en">Know and be able to apply specific latent heat calculations.</div></div>
+      <div class="formula">E = mL &nbsp;·&nbsp; L 单位 J kg⁻¹</div>
+      <ul class="ptxt">
+        <li><b>比潜热</b>＝变态期间每单位质量转移的热能。固↔液用熔化比潜热；液↔气用汽化比潜热。</li>
+      </ul>
+      <div class="kbox"><div class="kt">计算（原题）</div><ul>
+        <li>3.0 kg 的 0°C 冰熔化为 0°C 水（L_fusion = 330 kJ kg⁻¹）→ E = 3.0 × 330 000 = <b>990 kJ</b></li>
+        <li>3.0 kg 水蒸气在 100°C 凝结释放 6900 kJ → L = 6 900 000 / 3.0 = <b>2.3×10⁶ J kg⁻¹</b></li>
+      </ul></div>
+      <ul class="ptxt"><li>温度升高＋变态同时发生：总能量 = 升温所需（比热容）＋变态所需（比潜热）<b>分别计算再相加</b>。</li></ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p5)">P5.4</span> 密度 Density<span class="en2">a b c 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-43"><div class="zh">a. 密度公式</div><div class="en">Know and be able to apply: density = mass/volume, ρ = m/V.</div></div>
+      <div class="formula">ρ = m/V &nbsp;·&nbsp; 1 g cm⁻³ = 1000 kg m⁻³</div>
+      <ul class="ptxt">
+        <li>密度＝单位体积的质量；单位常用 kg m⁻³ 或 g cm⁻³。</li>
+        <li>同种物质不同样品密度相同 → 可用于区分材料；多种物质组成的物体用<b>平均密度</b>＝总质量/总体积。</li>
+        <li>换算：2.7 g cm⁻³ = 2700 kg m⁻³；0.500 kg 铝体积 = 500/2.7 = <b>185 cm³</b>（3 s.f.）。</li>
+      </ul>
+      <div class="spec" id="spec-44"><div class="zh">b. 密度的实验测定</div><div class="en">Understand the experimental determination of densities.</div></div>
+      <ul class="ptxt">
+        <li><b>规则固体</b>：天平称质量；直尺量尺寸算体积。</li>
+        <li><b>不规则固体</b>：天平称质量；<b>排水法</b>——量筒先装水读数，放入样品再读数，差值＝体积；或<b>溢水杯（displacement can）</b>：注满到溢出口，放入样品，溢出水量＝体积。</li>
+        <li><b>液体</b>：先称空量筒质量，倒入样品再称，差值＝质量；量筒刻度读体积。</li>
+        <li>适用条件：样品不与水反应/溶解、能沉入水中；若<b>漂浮</b>，绑已知体积重物下沉，总排水量 − 重物体积＝样品体积。</li>
+      </ul>
+      <div class="kbox"><div class="kt">例题（原题）</div><p>物体 35.2 g，绑 447 g 密度 8.94 g cm⁻³ 的重物，总排水 105.0 cm³ → 重物体积 = 447/8.94 = 50 cm³ → 物体体积 = 55.0 cm³ → ρ = 35.2/55.0 = <b>0.640 g cm⁻³</b></p></div>
+      <div class="spec" id="spec-45"><div class="zh">c. 比较固液气密度</div><div class="en">Be able to compare the densities of solids, liquids and gases.</div></div>
+      <ul class="ptxt">
+        <li>密度由粒子质量＋堆积紧密程度决定。</li>
+        <li>大多数物质固态比液态略密（约 1.1 倍）；例外：<b>冰比液态水密度小</b>（冰中规则排列的分子间距更大）。</li>
+        <li>气体密度远小于固液：液态变气态时密度约降为 <b>1/1000</b>；气体密度取决于温度和压强。</li>
+        <li>固液密度范围都宽：固体可低于某些液体（木头浮于水、许多固体密度低于液态汞）；甚至某物质的固体可低于另一物质的气体（石墨烯气凝胶密度低于空气）。</li>
+        <li>数值参考：多数固液 1000–10 000 kg m⁻³（聚苯乙烯约 20、金约 19 000）；气体约 1 kg m⁻³。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p5)">P5.5</span> 压强 Pressure<span class="en2">a b 全覆盖（清单外补齐）</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-46"><div class="zh">a. 压强 = 力/面积</div><div class="en">Know and be able to apply: pressure = force/area.</div></div>
+      <div class="formula">p = F/A &nbsp;·&nbsp; 1 Pa = 1 N m⁻²</div>
+      <ul class="ptxt">
+        <li>物体静放在水平面上，对表面压力＝其<b>重力</b>。</li>
+        <li>增大压强：增大力或减小受力面积（针尖、刀刃）；减小压强：减小力或增大面积（雪鞋、滑雪板）。</li>
+        <li>图钉：手指端面积大压强小、尖端面积小压强大——同一力，小面积处压强大。</li>
+        <li>物体下方表面压强 = 固体自身重力产生的压强＋上方气体（如大气）产生的压强；「固体的压强」只指固体贡献。</li>
+      </ul>
+      <div class="kbox"><div class="kt">例题（原题）</div><p>桌子 4 条腿、每条 5.0 cm 见方、重 250 N → 总接触面积 = 4×0.050² = 0.010 m² → p = 250/0.010 = <b>25 000 Pa</b></p></div>
+      <div class="spec" id="spec-47"><div class="zh">b. 流体静压强 hρg</div><div class="en">Know and be able to apply: hydrostatic pressure = hρg.</div></div>
+      <div class="formula">p = hρg &nbsp;·&nbsp; 只与深度、密度、g 有关，与容器形状无关</div>
+      <ul class="ptxt">
+        <li>流体（液和气）内部一点压强随深度增大，且<b>向各个方向作用</b>；压强来自上方流体的重力。</li>
+        <li>推导（可考）：液柱体积 Ah、质量 Ahρ、重力 Ahρg、压强 = Ahρg/A = hρg。</li>
+        <li>不同形状容器中同一深度的点压强相等。</li>
+        <li>液体中给定深度压强 = 液体贡献＋上方气体贡献；「液体的压强」只指液体部分。</li>
+      </ul>
+      <div class="kbox"><div class="kt">例题（原题）</div><p>海底总压 3.16×10⁶ Pa，海水 ρ=1020 kg m⁻³，大气压 1.0×10⁵ Pa，g=10 → 水的压强 = 3.06×10⁶ Pa；h = 3.06×10⁶/(1020×10) = <b>300 m</b></p></div>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 视图：P6 波 ===== -->
+<section class="view" id="view-p6">
+  <div class="modhead" style="background:var(--p6)">
+    <div class="code">P6</div>
+    <div>
+      <div class="name">波 Waves</div>
+      <div class="en">P6.1–P6.5 共 5 节 · 全书最大模块（78 页）</div>
+    </div>
+  </div>
+  <div class="modmeta">
+    <span class="chip">覆盖清单 <b>㉜–㉞</b></span>
+    <span class="chip">页码 <b>p197–274</b></span>
+    <span class="chip">章节 <b>5</b></span>
+  </div>
+
+  <details open>
+    <summary><span class="sec" style="background:var(--p6)">P6.1</span> 波的性质 Wave properties<span class="en2">a–h 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-48"><div class="zh">a. 传递能量而无物质的净移动</div><div class="en">Understand the transfer of energy without net movement of matter.</div></div>
+      <ul class="ptxt">
+        <li>波是振动的模式；被吸收时把能量传给吸收物体，但<b>没有物质沿传播方向净移动</b>。</li>
+        <li>例子：声音（我嘴里的空气没进入你耳朵）、无线电波（电子不在发射机与接收机间传输）、水波（水原地振动不随波流走）。</li>
+      </ul>
+      <div class="errbox"><div class="et">判断题陷阱</div><p>海浪确实让船上下起伏，但水没有净移动 → 「海浪传递物质」是<b>错的</b>。</p></div>
+      <div class="spec" id="spec-49"><div class="zh">b. 横波与纵波</div><div class="en">Know and understand transverse and longitudinal waves.</div></div>
+      <ul class="ptxt">
+        <li>振动方向<b>垂直</b>于传播方向 → 横波；<b>平行</b> → 纵波。</li>
+        <li>横波＝所有电磁波、弦上波、地震 S 波；纵波＝声、超声、弹簧压缩波、地震 P 波。<b>水波是横纵混合</b>（椭圆运动，仍无净位移）。</li>
+        <li>弹簧演示题：手水平推拉 → 纵波；手垂直上下 → 横波。</li>
+      </ul>
+      <div class="spec" id="spec-50"><div class="zh">c. 波峰、波谷、密部、疏部</div><div class="en">Know and understand the terms: peak, trough, compression and rarefaction.</div></div>
+      <ul class="ptxt">
+        <li>横波：<b>波峰（peak）</b>与<b>波谷（trough）</b>等间距向外传播。</li>
+        <li>纵波：<b>密部（compression）</b>＝粒子被挤在一起；<b>疏部（rarefaction）</b>＝粒子被拉开。</li>
+        <li>声波密部压强高于大气压、疏部低于大气压；可用压力变化或粒子位移描述。</li>
+      </ul>
+      <div class="spec" id="spec-51"><div class="zh">d. 波的实例（含电磁波和声）</div><div class="en">Recall examples of waves, including electromagnetic waves and sound.</div></div>
+      <ul class="ptxt">
+        <li><b>机械波</b>（声、超声、地震波、水波、弦波、弹簧波）：粒子振动、需要介质、真空不能传。</li>
+        <li><b>电磁波</b>（无线电、微波、红外、可见光、紫外、X、γ）：电场磁场振动、不需要介质、真空中以光速传播。</li>
+        <li>电磁波本质：带电粒子振动产生变化的电磁场，以电磁波形式传播；可见光只是电磁波谱一小部分。</li>
+        <li>钟罩实验（原题）：抽真空后仍能看到铃（光＝电磁波真空可传），听不到铃声（声＝机械波真空不能传）。「听不到」的原因是有无介质，与横纵无关。</li>
+      </ul>
+      <div class="spec" id="spec-52"><div class="zh">e. 振幅、波长、频率、周期</div><div class="en">Know and be able to use the terms: amplitude, wavelength, frequency and period.</div></div>
+      <ul class="ptxt">
+        <li><b>波长</b>：横波相邻波峰（或波谷）间距；纵波相邻密部（或疏部）间距。</li>
+        <li><b>振幅</b>：粒子偏离平衡位置的最大位移。</li>
+        <li><b>周期 T</b>：完成一次完整振动的时间（秒）。<b>频率 f</b>：单位时间振动次数（Hz，1 Hz＝每秒 1 次）。</li>
+        <li>同速两波比较：峰更密 → 波长更短、频率更高；振幅看纵向高度。</li>
+      </ul>
+      <div class="spec" id="spec-53"><div class="zh">f. f = 1/T</div><div class="en">Know and be able to apply: frequency = 1/period, f = 1/T.</div></div>
+      <div class="formula">f = 1/T &nbsp;·&nbsp; T = 1/f</div>
+      <ul class="ptxt">
+        <li>从位移–时间图读周期再取倒数。例：T = 40 ms → f = 1/0.040 = 25 Hz。</li>
+        <li>前缀：1 ms=10⁻³ s、1 μs=10⁻⁶ s、1 ns=10⁻⁹ s；1 kHz=10³ Hz、1 MHz=10⁶ Hz、1 GHz=10⁹ Hz。</li>
+        <li>例题：示波器 6 个完整周期 108 ms → T = 18 ms → f ≈ 56 Hz；人耳最高 20 kHz → 最短可听周期 T = 1/20000 = 0.000050 s。</li>
+      </ul>
+      <div class="spec" id="spec-54"><div class="zh">g. 波速 = 距离/时间</div><div class="en">Know and be able to apply: wave speed = distance/time.</div></div>
+      <div class="formula">v = s/t &nbsp;·&nbsp; 距离 = ½ × 波速 × 往返时间</div>
+      <ul class="ptxt">
+        <li>波速是波形中某个可识别点（峰/谷/密部/疏部）的移动速度。</li>
+        <li>测距应用：激光测距、超声扫描；因子 ½ 因为脉冲走了往返 2d。</li>
+        <li>例题：地月 380 000 km，无线电波 3.00×10⁸ m/s → 最小通信延迟 = 2×3.80×10⁸/3.00×10⁸ = 2.25 s；一年延迟增量 0.253 ns。</li>
+        <li>眼睛超声（A 扫描）：读各回波时间差，长度 = ½v(t₁−t₀)。</li>
+      </ul>
+      <div class="spec" id="spec-55"><div class="zh">h. v = fλ</div><div class="en">Know and be able to apply: wave speed = frequency × wavelength, v = fλ.</div></div>
+      <div class="formula">v = fλ</div>
+      <ul class="ptxt">
+        <li>推导：源在 t 秒内发出 ft 个完整波、波列长 ftλ → v = ftλ/t = fλ。</li>
+        <li>应用：20 Hz 时 λ = 330/20 = <b>16.5 m</b>；20 kHz 时 λ = 330/20000 = <b>16.5 mm</b>。</li>
+        <li>多普勒应用：星系 430 nm 光在地球测得 f = 6.67×10¹⁴ Hz → λ = 3.00×10⁸/6.67×10¹⁴ = 450 nm → 波长偏移 <b>+20 nm</b>（红移）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p6)">P6.2</span> 波的行为 Wave behaviour<span class="en2">a–e 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-56"><div class="zh">a. 表面反射</div><div class="en">Know and understand reflection at a surface.</div></div>
+      <ul class="ptxt">
+        <li>反射定律：<b>入射角 = 反射角</b>（入射光线、反射光线与法线同一平面）。角度从<b>法线</b>量起。</li>
+        <li>光滑表面：法线都平行 → 反射整齐（镜面成像）；粗糙表面：法线方向各异 → 漫反射（白纸）。</li>
+        <li>例题：激光脉冲往返月球 2.57 s → 地月距离 = ½×3.00×10⁸×2.57 = <b>3.86×10⁵ km</b>。</li>
+      </ul>
+      <div class="spec" id="spec-57"><div class="zh">b. 边界折射</div><div class="en">Know and understand refraction at a boundary.</div></div>
+      <ul class="ptxt">
+        <li>波以不同速度穿越边界时折射：不沿法线 → 方向改变；沿法线 → 方向不变（速度仍变）。</li>
+        <li><b>减速 → 向法线偏折</b>（空气→玻璃）；<b>加速 → 远离法线</b>（玻璃→空气）。</li>
+        <li>画图技巧：先画光线再画垂直的波前，波前在边界处连续。</li>
+        <li>水波靠近浅海岸：浅水波速慢 → 波长变短、向法线（海岸）偏折——频率不变。</li>
+      </ul>
+      <div class="spec" id="spec-58"><div class="zh">c. 反射与折射对速度、频率、波长、方向的影响</div><div class="en">Know and understand the effect of reflection and refraction on the speed, frequency, wavelength and direction of waves.</div></div>
+      <ul class="ptxt">
+        <li><b>反射</b>：波留在同一介质 → 速度、频率、波长<b>都不变</b>，只改变方向。</li>
+        <li><b>折射</b>：跨边界 → 速度变 → 波长同向变（变快波长变长、变慢波长变短）；<b>频率始终不变</b>；方向除非 i=0 否则改变。</li>
+        <li>玻璃镜（背面镀银）例题：光在玻璃中比空气慢 → A、D（空气）波长相同且大于 B、C（玻璃）；频率在 A、B、C、D 全相等。</li>
+      </ul>
+      <div class="spec" id="spec-59"><div class="zh">d. 光与水波的反射折射类比</div><div class="en">Know and understand the analogy of reflection and refraction of light with that of water waves.</div></div>
+      <ul class="ptxt">
+        <li>波纹水槽展示水波波前；光线箱展示光线。两者反射折射行为相似可类比，但<b>不能无限类推</b>：光是电磁波（真空可传、电场磁场振动），水波是机械波（粒子振动）。</li>
+        <li>三个类比判断（原题均正确）：水波折射⇒光折射（都因速度变化）；水波反射定律⇒光反射定律；水波反射波长不变⇒光反射波长不变。</li>
+      </ul>
+      <div class="spec" id="spec-60"><div class="zh">e. 多普勒效应</div><div class="en">Know and understand the Doppler effect.</div></div>
+      <ul class="ptxt">
+        <li>波源与观测者相对运动 → 观测到的波长和频率改变：<b>靠近 → 波长变短、频率变高</b>；<b>远离 → 波长变长、频率变低</b>；相对静止 → 不变。</li>
+        <li>沿线速度越大偏移越大；<b>垂直于连线运动无偏移</b>。</li>
+        <li>应用：救护车警笛音调变化、测速雷达、超声血流测速、天文学光谱线测星系运动。</li>
+        <li>例题：蜜蜂 180 Hz——悬停 180 Hz、飞离 &lt;180 Hz、飞向 &gt;180 Hz、绕头绕圈 180 Hz（无沿线相对运动）。</li>
+        <li>哈勃/斯利弗：星系谱线波长增大 → 星系在远离我们；更远星系偏移更大 → 远离更快。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p6)">P6.3</span> 光学 Optics<span class="en2">a–e 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-61"><div class="zh">a. 平面镜反射光路图</div><div class="en">Draw and interpret ray diagrams to describe reflection in plane mirrors.</div></div>
+      <ul class="ptxt">
+        <li><b>光线</b>代表能量传递方向；<b>法线</b>是垂直表面的线；入射角 i、反射角 r 都从法线量。</li>
+        <li>平面镜：点光源反射后光线继续发散，看起来来自镜后一点 → <b>虚像</b>。虚像在镜后，与物到镜距离相等。</li>
+        <li>曲面反射：法线垂直于该点的切线；凹面镜会聚（实焦点），凸面镜发散（虚焦点）。</li>
+        <li>转角题：镜子转过 2° → 法线转 2° → 入射角＋反射角各变 2° → 反射光偏转 <b>4°</b>。</li>
+        <li>棱镜题：双筒望远镜直角棱镜，光两次反射各转 90°（入射角 45°）→ 总偏转 180° 返回原方向，顶角 θ = 90°。</li>
+      </ul>
+      <div class="spec" id="spec-62"><div class="zh">b. 入射角 = 反射角</div><div class="en">Know and be able to apply: angle of incidence = angle of reflection.</div></div>
+      <ul class="ptxt"><li>所有反射作图与计算都基于 i = r。</li></ul>
+      <div class="spec" id="spec-63"><div class="zh">c. 平面边界折射光路图</div><div class="en">Draw and interpret ray diagrams for refraction at a planar boundary.</div></div>
+      <ul class="ptxt">
+        <li>减速向法线偏、加速离法线偏；沿法线方向不变。</li>
+        <li>矩形棱镜：出射光与入射光<b>平行</b>；三角棱镜：出射光偏折。</li>
+        <li>白光通过三角棱镜：各波长在玻璃中速度不同 → 偏折不同 → <b>色散</b>成光谱；蓝（短波长）减速更多、偏折更大，红偏折小。</li>
+        <li>半圆玻璃块例题（原题）：正确图是 2、3、4——进玻璃向法线、出玻璃离法线，沿法线不偏。</li>
+        <li>彩虹例题：水速慢于空气 → 进水滴向法线、出水滴离法线，只有图 2 正确。</li>
+      </ul>
+      <div class="spec" id="spec-64"><div class="zh">d. 入射角与折射角</div><div class="en">Know and be able to interpret angle of incidence and angle of refraction.</div></div>
+      <ul class="ptxt">
+        <li><b>折射角</b>＝折射光线与法线的夹角。折射方向取决于两侧光速：高速→低速向法线偏，低速→高速离法线偏。</li>
+        <li>速度差越大 → 偏折越大（空气/玻璃边界比空气/水边界偏折更多；空气 3.0×10⁸、水 2.3×10⁸、玻璃 2.0×10⁸ m/s）。</li>
+        <li>池底鹅卵石：光从水进空气加速、离法线偏 → 反向延长后像在<b>上方</b> → 池塘看起来比实际<b>浅</b>。</li>
+        <li>恒星大气折射：光进大气减速、向法线偏 → 恒星视位置偏高（接近天顶则无偏移）。</li>
+      </ul>
+      <div class="spec" id="spec-65"><div class="zh">e. 折射对方向与速度的影响</div><div class="en">Know and understand the effect of refraction on wave direction (away from or towards the normal) and speed (increasing or decreasing).</div></div>
+      <ul class="ptxt"><li>减速向法线、加速离法线；沿法线方向不变但速度仍变；速度变化越大方向改变越大。</li></ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p6)">P6.4</span> 声波 Sound waves<span class="en2">a–g 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-66"><div class="zh">a. 声波由振动源产生</div><div class="en">Understand the production of sound waves by a vibrating source.</div></div>
+      <ul class="ptxt">
+        <li>振动源（扬声器振膜、弦、鼓面、空气柱、声带）使周围介质振动，振动模式以声波形式传开。</li>
+        <li>声波频率＝振动源频率；振幅取决于振动源振幅；<b>波速由介质决定，不由声源决定</b>。</li>
+        <li>超声也是振动源产生，只是频率高于 20 kHz。</li>
+      </ul>
+      <div class="spec" id="spec-67"><div class="zh">b. 需要介质</div><div class="en">Understand the need for a medium.</div></div>
+      <ul class="ptxt">
+        <li>声波是物质粒子的振动 → 需要介质，固液气都能传；<b>真空不能传</b>。</li>
+        <li>钟罩实验：抽真空后听不到铃（但看得到——光能传真空）。声速取决于介质性质。</li>
+        <li>选择判断：声波能在空气、玻璃、水、汞中传播，<b>不能在真空</b>传播。</li>
+      </ul>
+      <div class="spec" id="spec-68"><div class="zh">c. 响度↔振幅、音调↔频率</div><div class="en">Understand qualitatively the relation of loudness to amplitude and pitch to frequency.</div></div>
+      <ul class="ptxt">
+        <li>响度由<b>振幅</b>决定：振幅越大越响；音调由<b>频率</b>决定：频率越高音调越高。</li>
+        <li>示波器：峰越高＝振幅越大＝越响；峰越密＝周期越短＝频率越高＝音调越高。波长短↔周期短。</li>
+      </ul>
+      <div class="spec" id="spec-69"><div class="zh">d. 纵波</div><div class="en">Know and understand longitudinal waves.</div></div>
+      <ul class="ptxt">
+        <li>声波粒子沿传播方向振动 → 纵波；由密部、疏部组成；相邻两密部（或两疏部）间距＝一个波长。</li>
+        <li>检测声音：密部疏部引起压力变化，对检测器（耳膜/麦克风）施加变化的作用力。</li>
+        <li>灰尘粒子题：声波经过 → 粒子沿波传播方向振动（平行），不是向右移动也不是横向振动。</li>
+      </ul>
+      <div class="spec" id="spec-70"><div class="zh">e. 反射产生回声</div><div class="en">Understand that reflection causes echoes.</div></div>
+      <ul class="ptxt">
+        <li>回声＝声音经一个或多个表面反射后听到的声音；因反射路径更长所以晚到。</li>
+        <li>声波遵守反射定律；反射波波长与入射波相同。</li>
+        <li>例题：距悬崖 170 m、声速 340 m/s → 回声往返 340 m 耗时 1.0 s → 击木频率应使两次敲击间隔 2.0 s → f = <b>0.50 Hz</b>。</li>
+      </ul>
+      <div class="spec" id="spec-71"><div class="zh">f. 人耳听觉范围 20 Hz – 20 kHz</div><div class="en">Recall that the range of human hearing is 20 Hz to 20 kHz.</div></div>
+      <ul class="ptxt">
+        <li>人耳听不到低于约 20 Hz 或高于约 20 kHz 的声音；范围内可听。实际因人而异，老年人高频上限显著下降。</li>
+        <li>波长对应：20 Hz → 16.5 m；20 kHz → 1.65 cm（低频=长波、高频=短波）。</li>
+        <li>其他动物：狗最高 45 000 Hz、蝙蝠最高 90–100 kHz（下限 2000 Hz）；500 Hz 蝙蝠听不到。</li>
+        <li>超声＝频率高于 20 kHz 的声波，大多数人听不到。</li>
+      </ul>
+      <div class="spec" id="spec-72"><div class="zh">g. 超声及其应用（声呐与医学扫描）</div><div class="en">Know and understand ultrasound and its uses (sonar and medical scanning).</div></div>
+      <div class="formula">d = vt/2</div>
+      <ul class="ptxt">
+        <li>超声：纵波、频率 &gt;20 kHz、机械波（真空不能传）、人耳通常听不到。</li>
+        <li>测距：发射超声脉冲（ping）、测回波时间 → d = vt/2。</li>
+        <li><b>SONAR（声呐）</b>：测海底深度、定位船只/鱼群；例题：脉冲 0.40 s 返回、水中声速 1500 m/s → 海底深度 = 1500×0.40/2 = <b>300 m</b>。</li>
+        <li><b>医学扫描（产前扫描）</b>：超声脉冲进入体内，每个组织边界部分反射 → 用各回波时间构建内部图像。</li>
+        <li>超声优点：能成像软组织、<b>不损伤人体组织</b>。</li>
+        <li>裂纹检测：部分反射发生在裂纹处 → 由回波时间定裂纹深度（与产前扫描原理相同）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p6)">P6.5</span> 电磁波谱 Electromagnetic spectrum<span class="en2">a–e 全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-73"><div class="zh">a. 电磁波的性质</div><div class="en">Know and understand the nature and properties of electromagnetic waves.</div></div>
+      <ul class="ptxt">
+        <li>电磁波：无线电、微波、红外、可见光、紫外、X、γ；<b>传递能量</b>；<b>都是横波</b>；<b>不需要介质</b>、可穿真空；真空中速度都是光速 c = 3.0×10⁸ m/s；其他介质中变慢。</li>
+        <li>本质：不是粒子振动，而是<b>电场和磁场的振动</b>——这是能在真空传播的原因。</li>
+        <li>源：任何使电荷振动的东西都会发射电磁波；一切高于绝对零度的物体都发射（热的物体辐射更多、更高频）；冷石头发大量红外但无可见光，加热的金属先红热再白热；太阳表面辐射以红外为主、含可见光和紫外、外层大气发 X 射线。</li>
+        <li>吸收三种效应：加热（辐射取暖器、微波炉）、表面电子以波频振动（无线电接收）、<b>电离</b>（X/γ 被人体组织吸收）。</li>
+        <li>横波证据：电视天线振子都水平排列，因无线电波在水平面振动。</li>
+      </ul>
+      <div class="spec" id="spec-74"><div class="zh">b. 波谱组成</div><div class="en">Recall the component parts of the spectrum.</div></div>
+      <ul class="ptxt">
+        <li>七段：<b>radio waves, microwaves, infra-red, visible light, ultraviolet, X-rays, gamma-rays</b>（无线电、微波、红外、可见光、紫外、X、γ）。</li>
+        <li>可见光又分七色：红橙黄绿蓝靛紫。</li>
+        <li>各区边界不清晰、有重叠：微波与无线电交界可归为任一类，<b>相同波长的微波和无线电波完全相同</b>；X 与 γ 交界按<b>产生方式</b>命名（X＝快速电子撞击金属靶；γ＝放射性衰变），同波长则相同。</li>
+      </ul>
+      <div class="spec" id="spec-75"><div class="zh">c. 按波长/频率区分</div><div class="en">Understand the distinction of the component parts by different wavelengths and/or frequencies.</div></div>
+      <ul class="ptxt">
+        <li>不同区域靠波长和频率区分：无线电波长最长、频率最低；γ 波长最短、频率最高。</li>
+        <li>c = fλ：f ∝ 1/λ；波长越长频率越低。可见光谱：红光长波低频端、紫光短波高频端。</li>
+      </ul>
+      <div class="spec" id="spec-76"><div class="zh">d. 按波长/频率排序</div><div class="en">Recall the order of the component parts by wavelength and/or frequency.</div></div>
+      <div class="formula">λ 递增：γ → X → 紫外 → 可见 → 红外 → 微波 → 无线电 · 频率递增方向相反</div>
+      <ul class="ptxt">
+        <li>频率由源中电子振动决定；波速由介质决定。跨介质时<b>频率不变</b>、速度变、波长同向变。</li>
+        <li>宇宙膨胀拉伸题：γ 变微波（可行，波长变长）、蓝光变紫外（不可行，波长变短）、X 变红外（可行）、微波变可见（不可行）→ <b>1、3 正确</b>。</li>
+      </ul>
+      <div class="spec" id="spec-77"><div class="zh">e. 各成分的应用与危害</div><div class="en">Understand applications and hazards of the component parts of the electromagnetic spectrum.</div></div>
+      <table>
+        <colgroup><col style="width:14%"><col style="width:44%"><col style="width:42%"></colgroup>
+        <tr><th>波段</th><th>应用</th><th>危害</th></tr>
+        <tr><td>无线电</td><td>通信（广播/TV）、雷达、射电天文</td><td>极强才有害</td></tr>
+        <tr><td>微波</td><td>卫星通信、雷达、手机、WiFi、微波炉</td><td>过量被组织吸收→损伤组织、白内障（需反射服）</td></tr>
+        <tr><td>红外</td><td>辐射取暖器、遥控、热成像、夜视、光纤通信</td><td>灼伤、细胞损伤</td></tr>
+        <tr><td>可见光</td><td>视觉、望远镜/显微镜、照明、光纤、LASER</td><td>直视强光源损伤视网膜（勿直视太阳）</td></tr>
+        <tr><td>紫外</td><td>荧光（验钞/洗剂）、杀菌消毒、诱虫</td><td>视网膜损伤、晒伤、皮肤癌</td></tr>
+        <tr><td>X 射线</td><td>X 影像、CT、机场安检、晶体衍射、艺术鉴定</td><td>电离辐射→细胞损伤、多种癌症</td></tr>
+        <tr><td>γ 射线</td><td>放疗、放射性示踪、食品灭菌、管道裂纹定位</td><td>电离辐射→癌症、基因突变（影响下一代）</td></tr>
+      </table>
+      <ul class="ptxt">
+        <li>高频短波（X/γ）能<b>电离</b>；低频长波不能电离但<b>加热</b>；通信用极高频率（信息量大）且以光速传播。</li>
+        <li>有用属性→应用（原题表）：传能（辐射取暖/太阳能/LASER 切割）、穿真空（卫星通信/天文望远镜）、可反射（车灯/射电望远镜）、穿大气（长距离通信）、高频（承载大量信息）、光速（快速传信）、电离（手术室防静电积聚）、穿烟尘（红外烟雾定位）、热体都发射（热成像）、穿人体组织（X 成像/放疗/示踪）、光纤导引（电话/内窥镜）、透明介质折射（聚焦/光学仪器）、强 LASER 束（切割金属/条码/光盘）。</li>
+        <li>降风险（原题表）：远离强发射器；限制直接暴露（微波反射服）；保持距离＋反射服（红外）；不直视强光源/望远镜禁指太阳/戴墨镜（可见）；防晒霜/遮紫外（紫外）；铅屏蔽/距离/防护服（X）；距离＋时间＋铅屏蔽＋远程操作（γ）。</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 视图：P7 放射性 ===== -->
+<section class="view" id="view-p7">
+  <div class="modhead" style="background:var(--p7)">
+    <div class="code">P7</div>
+    <div>
+      <div class="name">放射性 Radioactivity</div>
+      <div class="en">P7.1–P7.4 共 4 节</div>
+    </div>
+  </div>
+  <div class="modmeta">
+    <span class="chip">覆盖清单 <b>㉟–㊺</b></span>
+    <span class="chip">页码 <b>p275–312</b></span>
+    <span class="chip">章节 <b>4</b></span>
+  </div>
+
+  <details open>
+    <summary><span class="sec" style="background:var(--p7)">P7.1</span> 原子结构 Atomic structure<span class="en2">全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-78"><div class="zh">原子构成与核模型</div><div class="en">Structure of the atom; the nuclear model.</div></div>
+      <ul class="ptxt">
+        <li>原子＝质子、中子、电子。<b>核模型</b>：小而密的核在中心（质子＋中子＝核子）；核半径约为原子半径的 1/100 000，却包含 99.9% 以上质量；核外绝大部分是空空间，电子决定原子大小。</li>
+        <li>质子间因同性相斥本应飞散，是<b>强核力</b>把它们压在一起。</li>
+      </ul>
+      <div class="spec" id="spec-79"><div class="zh">相对电荷与质量（必背表）</div><div class="en">Relative charges and masses of proton, neutron, electron.</div></div>
+      <table>
+        <colgroup><col style="width:34%"><col style="width:30%"><col style="width:36%"></colgroup>
+        <tr><th>粒子</th><th>相对电荷</th><th>相对质量</th></tr>
+        <tr><td>质子</td><td>+1</td><td>1</td></tr>
+        <tr><td>中子</td><td>0</td><td>1</td></tr>
+        <tr><td>电子</td><td>−1</td><td>1/2000（近似）</td></tr>
+      </table>
+      <ul class="ptxt"><li>核永远是正电（有质子）。</li></ul>
+      <div class="spec" id="spec-80"><div class="zh">原子序数与质量数</div><div class="en">Atomic number and mass number.</div></div>
+      <ul class="ptxt">
+        <li>原子序数＝质子数（决定元素种类）；质量数＝质子＋中子（核子数）；中子数＝质量数−原子序数。</li>
+        <li>中性原子：电子数＝质子数＝原子序数。</li>
+      </ul>
+      <div class="spec" id="spec-81"><div class="zh">同位素的概念</div><div class="en">The term isotope.</div></div>
+      <ul class="ptxt">
+        <li>同元素（质子数相同）、中子数不同的核素。如氢的三种同位素（¹H、²H、³H）。</li>
+        <li>判断同位素只看质子数；只给质量数无法判断（40 个核子可能是 19+21 或 20+20）。</li>
+      </ul>
+      <div class="spec" id="spec-82"><div class="zh">核素与核素符号</div><div class="en">The term nuclide, and nuclide notation.</div></div>
+      <ul class="ptxt">
+        <li>核素＝特定质子数＋中子数的原子核种类。符号 ᴬzX：A 在左上（质量数）、Z 在左下（原子序数），如 ²³⁵₉₂U：92 质子、143 中子。简化写法 He-4 只给质量数。</li>
+      </ul>
+      <div class="spec" id="spec-83"><div class="zh">电离由得失电子造成</div><div class="en">Ionisation is caused by gain/loss of electrons.</div></div>
+      <ul class="ptxt">
+        <li>原子得失电子→离子（失电子带正电、得电子带负电）。原子不会得失质子/中子 → 电离不改变原子序数和质量数（例：⁵⁸₂₈Ni 得 2 个电子仍是 Z=28、A=58）。</li>
+        <li>电离可由摩擦起电、离子键、电离辐射引起。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p7)">P7.2</span> 放射性衰变 Radioactive decay<span class="en2">全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-84"><div class="zh">不稳定核</div><div class="en">Emissions arise from an unstable nucleus.</div></div>
+      <ul class="ptxt">
+        <li>稳定核无限存在；不稳定核迟早衰变并放出辐射（α、β、γ 一种或多种）→ 放射性核素。衰变后可能到达稳定核，也可能进入衰变链（继续衰变直到稳定）。</li>
+      </ul>
+      <div class="spec" id="spec-85"><div class="zh">随机性</div><div class="en">Random nature of decay.</div></div>
+      <ul class="ptxt">
+        <li>无法预测单个核何时衰变，无触发、无原因（自发）；温度、化学状态、外部条件都无法改变衰变速率（加热不会加速）。大量核的衰变概率可统计（骰子模型）。</li>
+      </ul>
+      <div class="spec" id="spec-86"><div class="zh">α/β/γ 区别与本质</div><div class="en">Differences between alpha, beta and gamma emission; nature of alpha and beta particles, and gamma radiation.</div></div>
+      <table>
+        <colgroup><col style="width:14%"><col style="width:30%"><col style="width:18%"><col style="width:38%"></colgroup>
+        <tr><th>类型</th><th>本质</th><th>电荷</th><th>速度/质量</th></tr>
+        <tr><td>α</td><td>氦核 ⁴₂He（2 质子 2 中子）</td><td>+2</td><td>质量 4×质子，速度约 0.1c</td></tr>
+        <tr><td>β</td><td>高速电子 ⁰₋₁e</td><td>−1</td><td>质量约质子 1/2000，速度约 0.8c</td></tr>
+        <tr><td>γ</td><td>电磁辐射（γ 波段）</td><td>0</td><td>无质量，速度 c</td></tr>
+      </table>
+      <div class="spec" id="spec-87"><div class="zh">核方程与守恒</div><div class="en">Nuclear equations; conservation laws.</div></div>
+      <ul class="ptxt">
+        <li>α 衰变：A−4、Z−2；β 衰变：A 不变、Z+1；γ 衰变：A、Z 都不变。</li>
+        <li>两条守恒铁律：<b>质量数守恒</b>（核子不灭）＋<b>电荷守恒</b>（左右原子序数和相等）——可反推缺失的 A 或 Z。</li>
+        <li>β 衰变微观机制：核内一个中子转变成质子（留在核内）并放出电子（β 粒子）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p7)">P7.3</span> 电离辐射 Ionising radiation<span class="en2">全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-88"><div class="zh">相对穿透能力</div><div class="en">Relative penetrating abilities of alpha, beta and gamma.</div></div>
+      <ul class="ptxt">
+        <li>α &lt; β &lt; γ。α：纸/皮肤挡住、空气中几厘米；β：薄金属（约几毫米铝）、空气中几米；γ：几厘米铅或厚混凝土、空气中几百米。注意描述用「typically/up to」。</li>
+      </ul>
+      <div class="spec" id="spec-89"><div class="zh">相对电离能力</div><div class="en">Relative ionising abilities of alpha, beta and gamma.</div></div>
+      <ul class="ptxt">
+        <li>α &gt; β &gt; γ，与穿透力正好相反。原因（指南原文）：α 质量大→动量大＋双电荷→极易与原子作用→很快损失动能→不穿透；γ 不带电→作用弱→穿得远。</li>
+      </ul>
+      <div class="spec" id="spec-90"><div class="zh">电场/磁场中的偏转</div><div class="en">Deflection of α, β, γ in electric or magnetic fields.</div></div>
+      <ul class="ptxt">
+        <li>α、β 带电 → 都偏转且方向相反（电荷相反）；β 偏转更大（质量小，α 质量约是 β 的 8000 倍）；γ 不带电 → 不偏转。</li>
+        <li>考试套路：P、R 反向偏转＋Q 不偏转 → Q 是 γ；最电离的 R 是 α、P 是 β。</li>
+      </ul>
+      <div class="spec" id="spec-91"><div class="zh">背景辐射</div><div class="en">Background radiation.</div></div>
+      <ul class="ptxt">
+        <li>环境中始终存在低水平电离辐射：自然来源占 &gt;80%（氡气、岩石建筑、宇宙射线、食物饮水）；人工来源 &lt;20%（医疗约 99%、核电和核武器试验）。</li>
+        <li>测量计数率必须扣除背景：源计数率＝有源读数−无源读数。</li>
+      </ul>
+      <div class="spec" id="spec-92"><div class="zh">应用与危害</div><div class="en">Applications and hazards of ionising radiation.</div></div>
+      <ul class="ptxt">
+        <li>危害机制：电离→损伤细胞 DNA→癌变；高剂量→辐射病甚至死亡。</li>
+        <li>体内 vs 体外完全不同：α 体内最危险（高电离）但体外无害（穿不透皮肤）；β 体内次于 α、体外危险（能穿透皮肤伤皮下）；γ 体内危害相对小（少电离）但体外危险（穿透全身）。</li>
+        <li>应用＋选源逻辑（指南给推导方法，会考）：<b>灭菌＝γ</b>（穿透最强、不使物体变放射性）＋长半衰期；<b>医学示踪剂＝γ</b>（电离最小、易穿透探测）＋短半衰期（几小时）；<b>测厚＝β</b>（能部分穿透、对厚度敏感，γ 穿透太强 α 完全挡不住）＋长半衰期。</li>
+        <li>防护：铅衬容器、长柄钳保持距离、手套防护服——核心是减少暴露（距离＋屏蔽＋时间）。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="sec" style="background:var(--p7)">P7.4</span> 半衰期 Half-life<span class="en2">全覆盖</span><span class="arr">▸</span></summary>
+    <div class="inner">
+      <div class="spec" id="spec-93"><div class="zh">读图（含衰变产物）</div><div class="en">Interpret graphical representations of radioactive decay.</div></div>
+      <ul class="ptxt">
+        <li>纵轴可画计数率或未衰变核百分比。任取一点读数→找它减半对应的时间差＝半衰期。</li>
+        <li>母核 X 百分比下降、子核 Y 上升，两者任何时候相加＝100%。</li>
+        <li>未修正背景的图：先读死区得背景值（如 20 cpm），再做减法（220−20=200 → 120−20=100，50 分钟内减半）。</li>
+      </ul>
+      <div class="spec" id="spec-94"><div class="zh">定义</div><div class="en">Definition of half-life.</div></div>
+      <ul class="ptxt">
+        <li>半衰期＝一半核衰变所需的平均时间；因计数率∝未衰变核数，也是计数率减半的时间（计数器距离不变）。</li>
+        <li>长半衰期→下降慢。半衰期不受样品大小、已衰变时间影响；不同核素不同（从几分之一秒到远超宇宙年龄）。</li>
+      </ul>
+      <div class="spec" id="spec-95"><div class="zh">计算</div><div class="en">Half-life calculations.</div></div>
+      <div class="formula">n 个半衰期后：(½)ⁿ × 初始 &nbsp;·&nbsp; 每步先扣背景辐射</div>
+      <ul class="ptxt">
+        <li>例：4000 cpm、半衰期 10 h → 50 h 后 (½)⁵×4000 = 125 cpm。</li>
+        <li>逆向：往过去推加倍（64 000 cps 现在、10 s 半衰期 → 20 s 前 = 256 000 cps）。</li>
+        <li>反推半衰期：600 → 75 减半了 3 次，12 h ÷ 3 = 4 h。</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  ESAT 物理弱项复习讲义 · 依据 UAT-UK《ESAT Guide – Physics》(June 2026) 逐条整理 · 备考自查用，最终以官方指南原文为准
+</footer>
+
+<script>
+(function(){
+  var views = document.querySelectorAll('.view');
+  var btns = document.querySelectorAll('nav button');
+  var modcards = document.querySelectorAll('.modcard');
+  function show(v){
+    for (var i=0;i<views.length;i++) views[i].classList.remove('active');
+    for (var j=0;j<btns.length;j++) btns[j].classList.remove('active');
+    var target = document.getElementById('view-'+v);
+    if (target) target.classList.add('active');
+    var btn = document.querySelector('nav button[data-v="'+v+'"]');
+    if (btn) btn.classList.add('active');
+    window.scrollTo(0,0);
+  }
+  for (var k=0;k<btns.length;k++){
+    btns[k].addEventListener('click', function(){
+      show(this.getAttribute('data-v'));
+    });
+  }
+  for (var m=0;m<modcards.length;m++){
+    modcards[m].addEventListener('click', function(){
+      show(this.getAttribute('data-go'));
+    });
+  }
+  function route(){
+    var h = location.hash.replace('#','');
+    if (h && document.getElementById('view-'+h)) show(h);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+  window.showView = show;
+})();
+</script>
+<script>
+/* ===== 考纲自查清单（讲义整合版） ===== */
+const CHECK_DATA = [
+ {
+  "id": "spec-0",
+  "sec": "P1.1",
+  "zh": "a. 知道并理解绝缘体可通过摩擦起电",
+  "en": "Know and understand that insulators can be charged by friction."
+ },
+ {
+  "id": "spec-1",
+  "sec": "P1.1",
+  "zh": "b. 知道并理解带电由电子得失造成",
+  "en": "Know and understand that charging is caused by gain or loss of electrons."
+ },
+ {
+  "id": "spec-2",
+  "sec": "P1.1",
+  "zh": "c. 知道并理解同斥异吸",
+  "en": "Know and understand that like charges repel and unlike charges attract."
+ },
+ {
+  "id": "spec-3",
+  "sec": "P1.1",
+  "zh": "d. 理解静电的应用与危害，含接地作用",
+  "en": "Understand applications and hazards associated with electrostatics, including the role of earthing."
+ },
+ {
+  "id": "spec-4",
+  "sec": "P1.2",
+  "zh": "ac vs dc：电流方向与波形判据",
+  "en": "Difference between ac and dc."
+ },
+ {
+  "id": "spec-5",
+  "sec": "P1.2",
+  "zh": "导体与绝缘体（含例子）",
+  "en": "Difference between conductors and insulators, with examples."
+ },
+ {
+  "id": "spec-6",
+  "sec": "P2.1",
+  "zh": "软磁与硬磁材料（如铁与钢）",
+  "en": "Difference between soft and hard magnetic materials (e.g. iron and steel)."
+ },
+ {
+  "id": "spec-7",
+  "sec": "P2.1",
+  "zh": "定性理解感应磁化",
+  "en": "Qualitatively understand induced magnetism."
+ },
+ {
+  "id": "spec-8",
+  "sec": "P2.2",
+  "zh": "电流的磁效应",
+  "en": "Magnetic effect of a current."
+ },
+ {
+  "id": "spec-9",
+  "sec": "P2.2",
+  "zh": "会画直导线、线圈/螺线管周围磁场图形（含方向）",
+  "en": "Magnetic field patterns around straight wires and coils/solenoids, including direction."
+ },
+ {
+  "id": "spec-10",
+  "sec": "P2.2",
+  "zh": "影响导线周围磁场强度的因素",
+  "en": "Factors affecting magnetic field strength around a wire."
+ },
+ {
+  "id": "spec-11",
+  "sec": "P2.2",
+  "zh": "永磁体与电磁铁的区别",
+  "en": "Difference between permanent magnets and electromagnets."
+ },
+ {
+  "id": "spec-12",
+  "sec": "P2.3",
+  "zh": "影响受力方向的因素（含左手定则）",
+  "en": "Factors affecting direction of force, including the left-hand rule."
+ },
+ {
+  "id": "spec-13",
+  "sec": "P2.3",
+  "zh": "影响受力大小的因素",
+  "en": "Factors affecting magnitude of the force on a wire."
+ },
+ {
+  "id": "spec-14",
+  "sec": "P2.3",
+  "zh": "直流电动机的构造与工作原理",
+  "en": "Construction and operation of a dc motor."
+ },
+ {
+  "id": "spec-15",
+  "sec": "P2.3",
+  "zh": "电磁铁的应用",
+  "en": "Applications of electromagnets."
+ },
+ {
+  "id": "spec-16",
+  "sec": "P2.4",
+  "zh": "感应电压的条件",
+  "en": "A voltage is induced when a wire cuts field lines, or when a magnetic field changes."
+ },
+ {
+  "id": "spec-17",
+  "sec": "P2.4",
+  "zh": "影响感应电压大小的因素",
+  "en": "Factors affecting magnitude of an induced voltage."
+ },
+ {
+  "id": "spec-18",
+  "sec": "P2.4",
+  "zh": "影响感应电压方向的因素（楞次定律）",
+  "en": "Factors affecting direction of an induced voltage."
+ },
+ {
+  "id": "spec-19",
+  "sec": "P2.4",
+  "zh": "交流发电机的工作原理",
+  "en": "Operation of an ac generator."
+ },
+ {
+  "id": "spec-20",
+  "sec": "P2.4",
+  "zh": "解读交流发电机输出电压图像",
+  "en": "Interpret the graphical representation of ac generator output voltage."
+ },
+ {
+  "id": "spec-21",
+  "sec": "P2.4",
+  "zh": "电磁感应的应用",
+  "en": "Applications of electromagnetic induction."
+ },
+ {
+  "id": "spec-22",
+  "sec": "P2.5",
+  "zh": "升压/降压与交流要求",
+  "en": "Step-up and step-down transformers; ac only."
+ },
+ {
+  "id": "spec-23",
+  "sec": "P2.5",
+  "zh": "电压比＝匝数比",
+  "en": "Vp/Vs = np/ns (ideal transformer)."
+ },
+ {
+  "id": "spec-24",
+  "sec": "P2.5",
+  "zh": "功率守恒与损耗",
+  "en": "VpIp = VsIs; losses."
+ },
+ {
+  "id": "spec-25",
+  "sec": "P2.5",
+  "zh": "高压输电",
+  "en": "High-voltage transmission; I²R loss."
+ },
+ {
+  "id": "spec-26",
+  "sec": "P4.1",
+  "zh": "a. 热导体与热绝缘体（含例子）",
+  "en": "Know and understand thermal conductors and insulators, with examples."
+ },
+ {
+  "id": "spec-27",
+  "sec": "P4.1",
+  "zh": "b. 影响传导速率的因素（能应用）",
+  "en": "Know and be able to apply factors affecting rate of conduction."
+ },
+ {
+  "id": "spec-28",
+  "sec": "P4.2",
+  "zh": "a. 温度对流体密度的影响",
+  "en": "Understand and be able to apply the effect of temperature on density of fluid."
+ },
+ {
+  "id": "spec-29",
+  "sec": "P4.2",
+  "zh": "b. 密度差引起的流体流动（对流）",
+  "en": "Understand and be able to apply fluid flow caused by differences in density."
+ },
+ {
+  "id": "spec-30",
+  "sec": "P4.3",
+  "zh": "a. 热辐射是红外区域的电磁波",
+  "en": "Understand thermal radiation as electromagnetic waves in the infrared region."
+ },
+ {
+  "id": "spec-31",
+  "sec": "P4.3",
+  "zh": "b. 辐射的吸收与发射",
+  "en": "Know and be able to apply absorption and emission of radiation."
+ },
+ {
+  "id": "spec-32",
+  "sec": "P4.3",
+  "zh": "c. 影响吸收/发射速率的因素",
+  "en": "Know and be able to apply factors affecting rate of absorption and emission of thermal radiation."
+ },
+ {
+  "id": "spec-33",
+  "sec": "P4.4",
+  "zh": "a. 能量转移对物体温度的影响",
+  "en": "Understand the effect of energy transferred to or from an object on its temperature."
+ },
+ {
+  "id": "spec-34",
+  "sec": "P4.4",
+  "zh": "b. 比热容（含计算）",
+  "en": "specific heat capacity = thermal energy / (mass × temperature change)"
+ },
+ {
+  "id": "spec-35",
+  "sec": "P5.1",
+  "zh": "a. 固液气的特征性质",
+  "en": "Know the characteristic properties of solids, liquids and gases."
+ },
+ {
+  "id": "spec-36",
+  "sec": "P5.1",
+  "zh": "b. 粒子模型（可应用）",
+  "en": "Know and be able to apply particle models of solids, liquids and gases."
+ },
+ {
+  "id": "spec-37",
+  "sec": "P5.1",
+  "zh": "c. 用粒子运动、作用力与间距解释性质",
+  "en": "Know and be able to explain properties in terms of particle motion and the forces and distances between the particles."
+ },
+ {
+  "id": "spec-38",
+  "sec": "P5.2",
+  "zh": "a. 用粒子行为解释压强与温度",
+  "en": "Be able to explain pressure and temperature in terms of the behaviour of particles."
+ },
+ {
+  "id": "spec-39",
+  "sec": "P5.2",
+  "zh": "b. 恒温下 PV = 常数（玻意耳定律）",
+  "en": "Understand and be able to apply the effect of pressure (P) on gas volume (V) at constant temperature, i.e. PV = constant."
+ },
+ {
+  "id": "spec-40",
+  "sec": "P5.3",
+  "zh": "a. 熔点与沸点",
+  "en": "Understand the terms melting point and boiling point."
+ },
+ {
+  "id": "spec-41",
+  "sec": "P5.3",
+  "zh": "b. 熔化潜热与汽化潜热",
+  "en": "Know and understand the terms latent heat of fusion and latent heat of vaporisation."
+ },
+ {
+  "id": "spec-42",
+  "sec": "P5.3",
+  "zh": "c. 比潜热计算",
+  "en": "Know and be able to apply specific latent heat calculations."
+ },
+ {
+  "id": "spec-43",
+  "sec": "P5.4",
+  "zh": "a. 密度公式",
+  "en": "Know and be able to apply: density = mass/volume, ρ = m/V."
+ },
+ {
+  "id": "spec-44",
+  "sec": "P5.4",
+  "zh": "b. 密度的实验测定",
+  "en": "Understand the experimental determination of densities."
+ },
+ {
+  "id": "spec-45",
+  "sec": "P5.4",
+  "zh": "c. 比较固液气密度",
+  "en": "Be able to compare the densities of solids, liquids and gases."
+ },
+ {
+  "id": "spec-46",
+  "sec": "P5.5",
+  "zh": "a. 压强 = 力/面积",
+  "en": "Know and be able to apply: pressure = force/area."
+ },
+ {
+  "id": "spec-47",
+  "sec": "P5.5",
+  "zh": "b. 流体静压强 hρg",
+  "en": "Know and be able to apply: hydrostatic pressure = hρg."
+ },
+ {
+  "id": "spec-48",
+  "sec": "P6.1",
+  "zh": "a. 传递能量而无物质的净移动",
+  "en": "Understand the transfer of energy without net movement of matter."
+ },
+ {
+  "id": "spec-49",
+  "sec": "P6.1",
+  "zh": "b. 横波与纵波",
+  "en": "Know and understand transverse and longitudinal waves."
+ },
+ {
+  "id": "spec-50",
+  "sec": "P6.1",
+  "zh": "c. 波峰、波谷、密部、疏部",
+  "en": "Know and understand the terms: peak, trough, compression and rarefaction."
+ },
+ {
+  "id": "spec-51",
+  "sec": "P6.1",
+  "zh": "d. 波的实例（含电磁波和声）",
+  "en": "Recall examples of waves, including electromagnetic waves and sound."
+ },
+ {
+  "id": "spec-52",
+  "sec": "P6.1",
+  "zh": "e. 振幅、波长、频率、周期",
+  "en": "Know and be able to use the terms: amplitude, wavelength, frequency and period."
+ },
+ {
+  "id": "spec-53",
+  "sec": "P6.1",
+  "zh": "f. f = 1/T",
+  "en": "Know and be able to apply: frequency = 1/period, f = 1/T."
+ },
+ {
+  "id": "spec-54",
+  "sec": "P6.1",
+  "zh": "g. 波速 = 距离/时间",
+  "en": "Know and be able to apply: wave speed = distance/time."
+ },
+ {
+  "id": "spec-55",
+  "sec": "P6.1",
+  "zh": "h. v = fλ",
+  "en": "Know and be able to apply: wave speed = frequency × wavelength, v = fλ."
+ },
+ {
+  "id": "spec-56",
+  "sec": "P6.2",
+  "zh": "a. 表面反射",
+  "en": "Know and understand reflection at a surface."
+ },
+ {
+  "id": "spec-57",
+  "sec": "P6.2",
+  "zh": "b. 边界折射",
+  "en": "Know and understand refraction at a boundary."
+ },
+ {
+  "id": "spec-58",
+  "sec": "P6.2",
+  "zh": "c. 反射与折射对速度、频率、波长、方向的影响",
+  "en": "Know and understand the effect of reflection and refraction on the speed, frequency, wavelength and direction of waves."
+ },
+ {
+  "id": "spec-59",
+  "sec": "P6.2",
+  "zh": "d. 光与水波的反射折射类比",
+  "en": "Know and understand the analogy of reflection and refraction of light with that of water waves."
+ },
+ {
+  "id": "spec-60",
+  "sec": "P6.2",
+  "zh": "e. 多普勒效应",
+  "en": "Know and understand the Doppler effect."
+ },
+ {
+  "id": "spec-61",
+  "sec": "P6.3",
+  "zh": "a. 平面镜反射光路图",
+  "en": "Draw and interpret ray diagrams to describe reflection in plane mirrors."
+ },
+ {
+  "id": "spec-62",
+  "sec": "P6.3",
+  "zh": "b. 入射角 = 反射角",
+  "en": "Know and be able to apply: angle of incidence = angle of reflection."
+ },
+ {
+  "id": "spec-63",
+  "sec": "P6.3",
+  "zh": "c. 平面边界折射光路图",
+  "en": "Draw and interpret ray diagrams for refraction at a planar boundary."
+ },
+ {
+  "id": "spec-64",
+  "sec": "P6.3",
+  "zh": "d. 入射角与折射角",
+  "en": "Know and be able to interpret angle of incidence and angle of refraction."
+ },
+ {
+  "id": "spec-65",
+  "sec": "P6.3",
+  "zh": "e. 折射对方向与速度的影响",
+  "en": "Know and understand the effect of refraction on wave direction (away from or towards the normal) and speed (increasing or decreasing)."
+ },
+ {
+  "id": "spec-66",
+  "sec": "P6.4",
+  "zh": "a. 声波由振动源产生",
+  "en": "Understand the production of sound waves by a vibrating source."
+ },
+ {
+  "id": "spec-67",
+  "sec": "P6.4",
+  "zh": "b. 需要介质",
+  "en": "Understand the need for a medium."
+ },
+ {
+  "id": "spec-68",
+  "sec": "P6.4",
+  "zh": "c. 响度↔振幅、音调↔频率",
+  "en": "Understand qualitatively the relation of loudness to amplitude and pitch to frequency."
+ },
+ {
+  "id": "spec-69",
+  "sec": "P6.4",
+  "zh": "d. 纵波",
+  "en": "Know and understand longitudinal waves."
+ },
+ {
+  "id": "spec-70",
+  "sec": "P6.4",
+  "zh": "e. 反射产生回声",
+  "en": "Understand that reflection causes echoes."
+ },
+ {
+  "id": "spec-71",
+  "sec": "P6.4",
+  "zh": "f. 人耳听觉范围 20 Hz – 20 kHz",
+  "en": "Recall that the range of human hearing is 20 Hz to 20 kHz."
+ },
+ {
+  "id": "spec-72",
+  "sec": "P6.4",
+  "zh": "g. 超声及其应用（声呐与医学扫描）",
+  "en": "Know and understand ultrasound and its uses (sonar and medical scanning)."
+ },
+ {
+  "id": "spec-73",
+  "sec": "P6.5",
+  "zh": "a. 电磁波的性质",
+  "en": "Know and understand the nature and properties of electromagnetic waves."
+ },
+ {
+  "id": "spec-74",
+  "sec": "P6.5",
+  "zh": "b. 波谱组成",
+  "en": "Recall the component parts of the spectrum."
+ },
+ {
+  "id": "spec-75",
+  "sec": "P6.5",
+  "zh": "c. 按波长/频率区分",
+  "en": "Understand the distinction of the component parts by different wavelengths and/or frequencies."
+ },
+ {
+  "id": "spec-76",
+  "sec": "P6.5",
+  "zh": "d. 按波长/频率排序",
+  "en": "Recall the order of the component parts by wavelength and/or frequency."
+ },
+ {
+  "id": "spec-77",
+  "sec": "P6.5",
+  "zh": "e. 各成分的应用与危害",
+  "en": "Understand applications and hazards of the component parts of the electromagnetic spectrum."
+ },
+ {
+  "id": "spec-78",
+  "sec": "P7.1",
+  "zh": "原子构成与核模型",
+  "en": "Structure of the atom; the nuclear model."
+ },
+ {
+  "id": "spec-79",
+  "sec": "P7.1",
+  "zh": "相对电荷与质量（必背表）",
+  "en": "Relative charges and masses of proton, neutron, electron."
+ },
+ {
+  "id": "spec-80",
+  "sec": "P7.1",
+  "zh": "原子序数与质量数",
+  "en": "Atomic number and mass number."
+ },
+ {
+  "id": "spec-81",
+  "sec": "P7.1",
+  "zh": "同位素的概念",
+  "en": "The term isotope."
+ },
+ {
+  "id": "spec-82",
+  "sec": "P7.1",
+  "zh": "核素与核素符号",
+  "en": "The term nuclide, and nuclide notation."
+ },
+ {
+  "id": "spec-83",
+  "sec": "P7.1",
+  "zh": "电离由得失电子造成",
+  "en": "Ionisation is caused by gain/loss of electrons."
+ },
+ {
+  "id": "spec-84",
+  "sec": "P7.2",
+  "zh": "不稳定核",
+  "en": "Emissions arise from an unstable nucleus."
+ },
+ {
+  "id": "spec-85",
+  "sec": "P7.2",
+  "zh": "随机性",
+  "en": "Random nature of decay."
+ },
+ {
+  "id": "spec-86",
+  "sec": "P7.2",
+  "zh": "α/β/γ 区别与本质",
+  "en": "Differences between alpha, beta and gamma emission; nature of alpha and beta particles, and gamma radiation."
+ },
+ {
+  "id": "spec-87",
+  "sec": "P7.2",
+  "zh": "核方程与守恒",
+  "en": "Nuclear equations; conservation laws."
+ },
+ {
+  "id": "spec-88",
+  "sec": "P7.3",
+  "zh": "相对穿透能力",
+  "en": "Relative penetrating abilities of alpha, beta and gamma."
+ },
+ {
+  "id": "spec-89",
+  "sec": "P7.3",
+  "zh": "相对电离能力",
+  "en": "Relative ionising abilities of alpha, beta and gamma."
+ },
+ {
+  "id": "spec-90",
+  "sec": "P7.3",
+  "zh": "电场/磁场中的偏转",
+  "en": "Deflection of α, β, γ in electric or magnetic fields."
+ },
+ {
+  "id": "spec-91",
+  "sec": "P7.3",
+  "zh": "背景辐射",
+  "en": "Background radiation."
+ },
+ {
+  "id": "spec-92",
+  "sec": "P7.3",
+  "zh": "应用与危害",
+  "en": "Applications and hazards of ionising radiation."
+ },
+ {
+  "id": "spec-93",
+  "sec": "P7.4",
+  "zh": "读图（含衰变产物）",
+  "en": "Interpret graphical representations of radioactive decay."
+ },
+ {
+  "id": "spec-94",
+  "sec": "P7.4",
+  "zh": "定义",
+  "en": "Definition of half-life."
+ },
+ {
+  "id": "spec-95",
+  "sec": "P7.4",
+  "zh": "计算",
+  "en": "Half-life calculations."
+ }
+];
+const MODS = {
+  P1:{name:'电学', color:'#3b6fb6'},
+  P2:{name:'磁学', color:'#7a4fd0'},
+  P4:{name:'热学', color:'#c4711f'},
+  P5:{name:'物质', color:'#2e8b57'},
+  P6:{name:'波',   color:'#c0392b'},
+  P7:{name:'放射性', color:'#8e3b5f'}
+};
+const ORDER = ['P1','P2','P4','P5','P6','P7'];
+const KEY = 'esat-phy-checklist-v2';
+let st = (function(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } })();
+let filt = 'all';
+
+function saveSt(){ try{ localStorage.setItem(KEY, JSON.stringify(st)); }catch(e){} }
+function partOf(sec){ return sec.slice(0,2); }
+
+function flagSVG(){
+  return '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 21 V4" stroke="#b3261e" stroke-width="2" stroke-linecap="round"/><path d="M5 5 h11 l-3 3.2 3 3.2 H5 Z" fill="#e02020"/></svg>';
+}
+
+function renderChecklist(){
+  var total = CHECK_DATA.length, done = 0, todo = 0;
+  var html = '';
+  for (var i=0;i<ORDER.length;i++){
+    var k = ORDER[i], m = MODS[k];
+    var items = CHECK_DATA.filter(function(c){ return partOf(c.sec) === k; });
+    var d = items.filter(function(c){ return st[c.id]; }).length;
+    var t = items.length - d;
+    done += d; todo += t;
+    var list = '';
+    for (var j=0;j<items.length;j++){
+      var it = items[j];
+      var isDone = !!st[it.id];
+      if (filt === 'todo' && isDone) continue;
+      if (filt === 'done' && !isDone) continue;
+      list += '<div class="clitem'+(isDone?' done':' weak')+'" data-id="'+it.id+'">'+
+        '<input type="checkbox"'+(isDone?' checked':'')+' data-key="'+it.id+'">'+
+        '<span class="flag">'+flagSVG()+'</span>'+
+        '<span class="txt"><div class="zh">'+it.zh+'</div><div class="en">'+it.en+'</div></span>'+
+        '<button class="go" data-goto="'+it.id+'">讲解</button></div>';
+    }
+    if (!list && filt !== 'all') list = '<div style="padding:10px 6px;font-size:13px;color:#9aa1a7">本模块无匹配项</div>';
+    html += '<section class="clgroup" data-mod="'+k+'">'+
+      '<div class="clg-head"><span class="clg-dot" style="background:'+m.color+'"></span>'+
+      '<span class="clg-name">'+k+' '+m.name+'</span>'+
+      '<span class="clg-count'+(t>0?' weak':'')+'">未掌握 <b>'+t+'</b> / '+items.length+' 条</span>'+
+      '<span class="clg-caret">▾</span></div>'+
+      '<div class="clitems">'+list+'</div></section>';
+  }
+  document.getElementById('clMods').innerHTML = html;
+  document.getElementById('clTotal').textContent = total;
+  document.getElementById('clDone').textContent = done;
+  document.getElementById('clTodo').textContent = todo;
+  document.getElementById('clFill').style.width = (total ? (done/total*100) : 0) + '%';
+  document.getElementById('statTodoN').textContent = todo;
+  var cardMap = {P1:'cardTodo-p1',P2:'cardTodo-p2',P4:'cardTodo-p4',P5:'cardTodo-p5',P6:'cardTodo-p6',P7:'cardTodo-p7'};
+  for (var kk in cardMap){
+    var el = document.getElementById(cardMap[kk]);
+    if (!el) continue;
+    var cnt = CHECK_DATA.filter(function(x){ return partOf(x.sec) === kk; }).length;
+    var dn = CHECK_DATA.filter(function(x){ return partOf(x.sec) === kk && st[x.id]; }).length;
+    var t2 = cnt - dn;
+    el.textContent = t2 > 0 ? '未掌握 ' + t2 + ' 条' : '全部掌握';
+    el.style.background = t2 > 0 ? '#c62828' : '#2e7d32';
+  }
+  document.querySelectorAll('.cl-tab').forEach(function(tb){ tb.classList.toggle('active', tb.dataset.f === filt); });
+}
+
+function updateSpecFlags(){
+  var weak = {};
+  for (var i=0;i<CHECK_DATA.length;i++) if (!st[CHECK_DATA[i].id]) weak[CHECK_DATA[i].id] = true;
+  var specs = document.querySelectorAll('.spec');
+  for (var j=0;j<specs.length;j++){
+    var s = specs[j];
+    var has = s.id && weak[s.id];
+    s.classList.toggle('weak', !!has);
+    var ft = s.querySelector('.flagtag');
+    if (has && !ft){
+      var sp = document.createElement('span');
+      sp.className = 'flagtag';
+      sp.textContent = '未掌握';
+      s.insertBefore(sp, s.firstChild);
+    } else if (!has && ft){
+      ft.remove();
+    }
+  }
+}
+
+function gotoSpec(id){
+  var el = document.getElementById(id);
+  if (!el) return;
+  var part = 'P1';
+  for (var i=0;i<CHECK_DATA.length;i++){ if (CHECK_DATA[i].id === id){ part = partOf(CHECK_DATA[i].sec); break; } }
+  if (typeof window.showView === 'function') window.showView(part);
+  var d = el.closest('details');
+  if (d) d.open = true;
+  setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'center'}); }, 80);
+}
+
+document.addEventListener('click', function(e){
+  var cb = e.target.closest('.clitem input[data-key]');
+  if (cb){ st[cb.dataset.key] = cb.checked; saveSt(); renderChecklist(); updateSpecFlags(); return; }
+  var go = e.target.closest('.clitem .go');
+  if (go){ gotoSpec(go.getAttribute('data-goto')); return; }
+  var head = e.target.closest('.clg-head');
+  if (head){ head.closest('.clgroup').classList.toggle('collapsed'); return; }
+  var tab = e.target.closest('.cl-tab');
+  if (tab){ filt = tab.dataset.f; renderChecklist(); return; }
+  if (e.target.closest('#clReset')){
+    if (confirm('确定清空全部勾选进度？')){
+      try{ localStorage.removeItem(KEY); }catch(e2){}
+      st = {}; renderChecklist(); updateSpecFlags();
+    }
+    return;
+  }
+  if (e.target.closest('#clExport')){
+    var list = CHECK_DATA.filter(function(c){ return !st[c.id]; })
+      .map(function(c){ return '[' + c.sec + '] ' + c.zh + ' — ' + c.en; }).join('\n');
+    document.getElementById('clExportBox').value = list ? list : '（全部已掌握，暂无未掌握项）';
+    document.getElementById('clPanel').classList.add('open');
+    return;
+  }
+  if (e.target.closest('.clclose')){ document.getElementById('clPanel').classList.remove('open'); }
+});
+
+renderChecklist();
+updateSpecFlags();
+</script>
+</body>
+</html>
